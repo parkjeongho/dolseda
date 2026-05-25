@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="646" height="250" viewBox="0 0 646 250">
+  <rect width="646" height="250" rx="28" fill="#000"/>
+  <rect x="1.5" y="1.5" width="643" height="247" rx="26.5" fill="none" stroke="#A6A6A6" stroke-width="3"/>
+
+  <!-- Play icon (Google colors) -->
+  <g transform="translate(52, 62)">
+    <!-- Shadow/background -->
+    <path d="M8.6 3.3C5.6 0.2 1 0 0 0v126c1 0 5.6-0.2 8.6-3.3L70 64.7z" fill="url(#g1)"/>
+    <path d="M95 43L70 63.7 8.6 3.3C10.5 1.5 13.4 0.5 16.8 2.3L95 43z" fill="url(#g2)"/>
+    <path d="M95 83L16.8 123.7c-3.4 1.8-6.3 0.8-8.2-1L70 62.3z" fill="url(#g3)"/>
+    <path d="M70 63L95 43l17 10c4.8 2.7 4.8 7.3 0 10L95 73z" fill="url(#g4)"/>
+    <defs>
+      <linearGradient id="g1" x1="0" y1="0" x2="0" y2="126" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#00A0FF"/>
+        <stop offset="100%" stop-color="#0068FF"/>
+      </linearGradient>
+      <linearGradient id="g2" x1="0" y1="43" x2="112" y2="43" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#00D3FF"/>
+        <stop offset="100%" stop-color="#00D3FF"/>
+      </linearGradient>
+      <linearGradient id="g3" x1="0" y1="83" x2="112" y2="83" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#FFD800"/>
+        <stop offset="100%" stop-color="#FF8A00"/>
+      </linearGradient>
+      <linearGradient id="g4" x1="80" y1="53" x2="115" y2="73" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#FF3A44"/>
+        <stop offset="100%" stop-color="#C31162"/>
+      </linearGradient>
+    </defs>
+  </g>
+
+  <!-- GET IT ON text -->
+  <text x="192" y="97" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="28" fill="white" letter-spacing="2">GET IT ON</text>
+
+  <!-- Google Play text -->
+  <text x="190" y="165" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="62" font-weight="500" fill="white" letter-spacing="-1">Google Play</text>
+</svg>
