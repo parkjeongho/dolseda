@@ -1,7 +1,7 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
-import { useRef, useEffect } from "react"
+import { motion, useInView, AnimatePresence } from "framer-motion"
+import { useRef, useEffect, useState } from "react"
 import Image from "next/image"
 import { Shield, CheckCircle, ChevronDown } from "lucide-react"
 import { useLang } from "@/components/LanguageProvider"
@@ -26,37 +26,58 @@ function FadeUp({ children, delay = 0, className = "" }: {
 }
 
 const PLAY_URL = "https://play.google.com/store/apps/details?id=com.waffleparty.app"
+const SCREENS = ["/m1.png", "/m2.png"]
+
+function MobileCarousel() {
+  const [idx, setIdx] = useState(0)
+  const [dir, setDir] = useState(1)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDir(1)
+      setIdx(i => (i + 1) % SCREENS.length)
+    }, 2800)
+    return () => clearInterval(timer)
+  }, [])
+
+  return (
+    <div className="relative w-[150px] mx-auto overflow-hidden">
+      <AnimatePresence mode="wait" initial={false} custom={dir}>
+        <motion.div
+          key={idx}
+          custom={dir}
+          variants={{
+            enter: (d: number) => ({ x: d * 60, opacity: 0 }),
+            center: { x: 0, opacity: 1 },
+            exit: (d: number) => ({ x: d * -60, opacity: 0 }),
+          }}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
+        >
+          <div style={{ filter: "drop-shadow(0 24px 40px rgba(0,0,0,0.28)) drop-shadow(0 6px 12px rgba(0,0,0,0.16))" }}>
+            <Image src={SCREENS[idx]} alt={`ScamLens AI 화면 ${idx + 1}`} width={995} height={2048} className="w-full h-auto block" />
+          </div>
+        </motion.div>
+      </AnimatePresence>
+      {/* 인디케이터 */}
+      <div className="flex justify-center gap-1.5 mt-3">
+        {SCREENS.map((_, i) => (
+          <button key={i} onClick={() => { setDir(i > idx ? 1 : -1); setIdx(i) }}
+            className={`rounded-full transition-all duration-300 ${i === idx ? "w-4 h-1.5 bg-[#2563EB]" : "w-1.5 h-1.5 bg-[#CBD5E1]"}`}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
 const SECTION_IDS = ["hero", "problem", "features", "how", "stats", "download"]
 
 function PhoneMockup({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="relative" style={{ width: 295 }}>
-      {/* 폰 바디 */}
-      <div className="relative rounded-[42px] bg-[#111318] overflow-hidden"
-        style={{
-          padding: "12px 8px 14px 8px",
-          boxShadow: "0 40px 80px rgba(0,0,0,0.28), 0 8px 24px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.08)",
-        }}>
-        {/* 사이드 버튼 (장식) */}
-        <div className="absolute -left-[3px] top-[88px] w-[3px] h-8 rounded-l-sm bg-[#1E2028]" />
-        <div className="absolute -left-[3px] top-[132px] w-[3px] h-12 rounded-l-sm bg-[#1E2028]" />
-        <div className="absolute -left-[3px] top-[192px] w-[3px] h-12 rounded-l-sm bg-[#1E2028]" />
-        <div className="absolute -right-[3px] top-[120px] w-[3px] h-16 rounded-r-sm bg-[#1E2028]" />
-
-        {/* 스크린 영역 */}
-        <div className="relative rounded-[34px] overflow-hidden bg-black">
-          {/* 펀치홀 카메라 */}
-          <div className="absolute top-3 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#0A0A0C] z-10
-            ring-[2px] ring-[#1A1A1E]" />
-          <Image
-            src={src}
-            alt={alt}
-            width={1440}
-            height={2952}
-            className="w-full h-auto block"
-          />
-        </div>
-      </div>
+    <div className="w-[140px] lg:w-[240px]" style={{ filter: "drop-shadow(0 24px 40px rgba(0,0,0,0.28)) drop-shadow(0 6px 12px rgba(0,0,0,0.15))" }}>
+      <Image src={src} alt={alt} width={995} height={2048} className="w-full h-auto block" />
     </div>
   )
 }
@@ -97,82 +118,79 @@ export default function HomePage() {
   return (
     <>
       {/* ─── Hero ─── */}
-      <section id="hero" className="relative h-screen flex items-center overflow-hidden bg-white pt-[72px]">
+      <section id="hero" className="relative h-screen flex flex-col overflow-hidden bg-white">
         <div className="absolute inset-0 pointer-events-none">
           <NetworkBackground opacity={0.55} />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-transparent to-white/20" />
         </div>
 
-        <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6">
-          <div className="grid lg:grid-cols-[1fr,1.3fr] gap-8 items-center">
+        {/* GNB 여백 */}
+        <div className="h-[72px] shrink-0" />
 
-            {/* Left */}
-            <div>
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[rgba(0,212,170,0.10)] border border-[rgba(0,212,170,0.28)] text-[#00A88A] text-xs font-semibold mb-6">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00D4AA] animate-pulse" />
-                {t.hero.badge}
-              </motion.div>
+        {/* 중앙 콘텐츠: 남은 높이에서 수직 중앙 */}
+        <div className="relative z-10 flex-1 flex items-center min-h-0">
+          <div className="w-full max-w-[1200px] mx-auto px-6">
+            <div className="flex items-center gap-12 justify-center">
 
-              <motion.h1 initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.08 }}
-                className="leading-[1.12] tracking-[-0.03em] mb-6">
-                <span className="block text-[clamp(1.5rem,2.5vw,2rem)] font-medium text-[#94A3B8] mb-1">{t.hero.line1}</span>
-                <span className="block text-[clamp(2.25rem,4.5vw,3.75rem)] font-black text-[#0F172A]">{t.hero.line2}</span>
-              </motion.h1>
+              {/* 텍스트: 넓게 */}
+              <div className="flex-1 max-w-[580px]">
+                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[rgba(37,99,235,0.08)] border border-[rgba(37,99,235,0.25)] text-[#2563EB] text-xs font-semibold mb-5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] animate-pulse" />
+                  {t.hero.badge}
+                </motion.div>
 
-              <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.18 }}
-                className="text-[#64748B] text-[0.95rem] leading-relaxed mb-8 max-w-[440px]">
-                {t.hero.desc}
-              </motion.p>
+                <motion.h1 initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.08 }}
+                  className="leading-[1.12] tracking-[-0.03em] mb-5">
+                  <span className="block text-[clamp(1.1rem,1.8vw,1.6rem)] font-medium text-[#94A3B8] mb-1">{t.hero.line1}</span>
+                  <span className="block text-[clamp(2rem,3.8vw,3.25rem)] font-black text-[#0F172A] whitespace-pre-line">{t.hero.line2}</span>
+                </motion.h1>
 
-              <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.28 }}
-                className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
-                <a href={PLAY_URL} target="_blank" rel="noopener noreferrer"
-                  className="hover:opacity-90 hover:-translate-y-0.5 transition-all duration-200">
-                  <Image src="/badge-google-play.svg" alt="Google Play" width={160} height={48} className="h-12 w-auto" />
-                </a>
-                <div className="flex items-center gap-1.5 text-sm text-[#94A3B8]">
-                  <CheckCircle size={13} className="text-[#00D4AA] shrink-0" />
-                  {t.hero.free}
+                <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.18 }}
+                  className="text-[#64748B] text-[0.9rem] leading-relaxed mb-6 max-w-[460px] whitespace-pre-line">
+                  {t.hero.desc}
+                </motion.p>
+
+                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.26 }}
+                  className="flex flex-wrap gap-2 mb-7">
+                  {t.hero.features.map((f, i) => (
+                    <span key={i} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F0FDF4] border border-[#BBF7D0] text-[#15803D] text-xs font-semibold">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#22C55E]" />{f}
+                    </span>
+                  ))}
+                </motion.div>
+
+                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.32 }}
+                  className="flex items-center gap-3">
+                  <a href={PLAY_URL} target="_blank" rel="noopener noreferrer"
+                    className="hover:opacity-90 hover:-translate-y-0.5 transition-all duration-200">
+                    <div className="inline-block px-4 py-2 rounded-xl border border-[#D1D5DB]">
+                      <Image src="/google-banner-w.png" alt="Google Play" width={160} height={48} className="w-56 h-auto block" />
+                    </div>
+                  </a>
+                  <p className="text-xs text-[#94A3B8] leading-relaxed">{t.hero.free}</p>
+                </motion.div>
+              </div>
+
+              {/* 목업: 작게, 데스크탑만 */}
+              <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.15 }}
+                className="hidden lg:flex items-end gap-3 shrink-0">
+                <div className="-translate-y-6">
+                  <PhoneMockup src="/m1.png" alt="ScamLens AI 화면 1" />
+                </div>
+                <div className="translate-y-6">
+                  <PhoneMockup src="/m2.png" alt="ScamLens AI 화면 2" />
                 </div>
               </motion.div>
 
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
-                className="flex items-center gap-2 mt-6 text-xs text-[#94A3B8]">
-                <span className="text-base">🇰🇷</span><span className="text-base">🇺🇸</span><span className="text-base">🇹🇼</span>
-                <span className="ml-1">{t.download.countries}</span>
+              {/* 모바일: 캐러셀 */}
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
+                className="lg:hidden flex justify-center shrink-0">
+                <MobileCarousel />
               </motion.div>
             </div>
-
-            {/* Right: Two staggered phone mockups */}
-            <motion.div initial={{ opacity: 0, x: 32 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.15 }}
-              className="hidden lg:flex justify-center items-center">
-              <div className="relative flex items-end gap-5">
-
-                {/* 왼쪽 폰 — 위로 */}
-                <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
-                  className="-translate-y-16">
-                  <PhoneMockup src="/screen1.png" alt="ScamLens AI 화면 1" />
-                </motion.div>
-
-                {/* 오른쪽 폰 — 아래로 */}
-                <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.32 }}
-                  className="translate-y-16">
-                  <PhoneMockup src="/screen2.png" alt="ScamLens AI 화면 2" />
-                </motion.div>
-
-              </div>
-            </motion.div>
           </div>
         </div>
 
-        {/* 아래 화살표 */}
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center text-[#CBD5E1]">
-          <motion.div animate={{ y: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 1.8 }}>
-            <ChevronDown size={20} />
-          </motion.div>
-        </motion.div>
       </section>
 
       {/* ─── Problem ─── */}
@@ -285,7 +303,7 @@ export default function HomePage() {
 
             <a href={PLAY_URL} target="_blank" rel="noopener noreferrer"
               className="inline-block hover:opacity-90 hover:-translate-y-0.5 transition-all duration-200">
-              <Image src="/badge-google-play.svg" alt="Google Play" width={190} height={56} className="h-14 w-auto mx-auto" />
+              <Image src="/google-banner-w.png" alt="Google Play" width={190} height={56} className="h-14 w-auto mx-auto rounded-xl border border-[#D1D5DB]" />
             </a>
 
             <div className="mt-6 flex items-center justify-center gap-2 text-[#94A3B8] text-xs">

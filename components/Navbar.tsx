@@ -49,10 +49,10 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="shrink-0">
             <Image
-              src="/bi1-tr.png"
+              src="/logo22.png"
               alt="Vibe A Corp."
-              width={684}
-              height={434}
+              width={575}
+              height={352}
               className="h-8 w-auto object-contain"
               priority
             />
