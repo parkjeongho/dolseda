@@ -1,11 +1,8 @@
 import type { Metadata, Viewport } from "next"
-import { Inter } from "next/font/google"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import { LanguageProvider } from "@/components/LanguageProvider"
 import "./globals.css"
-
-const inter = Inter({ subsets: ["latin"], weight: ["300","400","500","600","700","800","900"] })
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -34,7 +31,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko" className={inter.className}>
+    <html lang="ko">
       <body className="bg-[#07070F] text-[#F0F0FF] antialiased">
         <LanguageProvider>
           <Navbar />

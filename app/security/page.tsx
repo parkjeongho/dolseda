@@ -122,7 +122,7 @@ export default function SecurityPage() {
 
                 <div className="flex flex-wrap gap-3 mb-7">
                   <a href="#" className="hover:-translate-y-0.5 transition-transform duration-200">
-                    <Image src="/badge-google-play.svg" alt="Get it on Google Play" width={180} height={70} className="h-[52px] w-auto" />
+                    <Image src="/ko_googleplay.svg" alt="Get it on Google Play" width={180} height={70} className="h-[52px] w-auto" />
                   </a>
                   <div className="opacity-35 cursor-not-allowed" title="App Store — 준비중">
                     <Image src="/badge-app-store.svg" alt="Download on the App Store" width={180} height={70} className="h-[52px] w-auto" />
@@ -427,7 +427,7 @@ export default function SecurityPage() {
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-4">
                   <a href="#" className="hover:-translate-y-1 transition-transform duration-200 drop-shadow-[0_0_20px_rgba(0,212,170,0.4)] hover:drop-shadow-[0_0_32px_rgba(0,212,170,0.6)]">
-                    <Image src="/badge-google-play.svg" alt="Get it on Google Play" width={216} height={84} className="h-[64px] w-auto" />
+                    <Image src="/ko_googleplay.svg" alt="Get it on Google Play" width={216} height={84} className="h-[64px] w-auto" />
                   </a>
                   <div className="opacity-30 cursor-not-allowed" title="App Store — 준비중">
                     <Image src="/badge-app-store.svg" alt="Download on the App Store" width={216} height={84} className="h-[64px] w-auto" />
