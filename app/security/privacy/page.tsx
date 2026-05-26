@@ -26,9 +26,9 @@ export default function PrivacyPage() {
   return (
     <div className="pt-24 pb-20">
       {/* Header */}
-      <div className="border-b border-white/8 pb-12 mb-0">
+      <div className="border-b border-[#E2E8F0] pb-12 mb-0">
         <div className="max-w-[800px] mx-auto px-6">
-          <Link href="/security" className="inline-flex items-center gap-1.5 text-sm text-[#9090B8] hover:text-white transition-colors mb-8">
+          <Link href="/security" className="inline-flex items-center gap-1.5 text-sm text-[#64748B] hover:text-[#2563EB] transition-colors mb-8">
             <ChevronLeft size={16} /> ScamLens AI
           </Link>
           <div className="flex items-center gap-3 mb-4">
@@ -36,11 +36,11 @@ export default function PrivacyPage() {
               <Shield size={18} className="text-white" />
             </div>
             <div>
-              <div className="text-xs text-[#9090B8]">ScamLens AI · Vibe A</div>
-              <h1 className="text-2xl font-black tracking-tight">{h.title}</h1>
+              <div className="text-xs text-[#64748B]">ScamLens AI · Vibe A</div>
+              <h1 className="text-2xl font-black tracking-tight text-[#0F172A]">{h.title}</h1>
             </div>
           </div>
-          <p className="text-[#9090B8] text-sm mb-6">{h.subtitle}: {h.updated}</p>
+          <p className="text-[#64748B] text-sm mb-6">{h.subtitle}: {h.updated}</p>
 
           {/* Language tabs */}
           <div className="flex gap-2">
@@ -51,7 +51,7 @@ export default function PrivacyPage() {
                 className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
                   lang === t.id
                     ? "bg-[#5B6EF5] text-white"
-                    : "bg-white/6 text-[#9090B8] hover:bg-white/10 hover:text-white"
+                    : "bg-[#F0F4FF] text-[#64748B] hover:bg-[#E8EEFF] hover:text-[#2563EB]"
                 }`}
               >
                 {t.label}
@@ -76,8 +76,8 @@ export default function PrivacyPage() {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="mb-10">
-      <h2 className="text-lg font-bold text-white mb-4 pb-3 border-b border-white/8">{title}</h2>
-      <div className="space-y-3 text-[#9090B8] text-sm leading-relaxed [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-2 [&_table]:w-full [&_table]:border-collapse [&_table]:rounded-xl [&_table]:overflow-hidden [&_th]:bg-white/5 [&_th]:text-white [&_th]:font-semibold [&_th]:text-xs [&_th]:p-3 [&_th]:text-left [&_td]:p-3 [&_td]:border-b [&_td]:border-white/6 [&_td]:text-xs [&_td]:text-[#9090B8]">
+      <h2 className="text-lg font-bold text-[#0F172A] mb-4 pb-3 border-b border-[#E2E8F0]">{title}</h2>
+      <div className="space-y-3 text-[#64748B] text-sm leading-relaxed [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-2 [&_table]:w-full [&_table]:border-collapse [&_table]:rounded-xl [&_table]:overflow-hidden [&_th]:bg-[#F0F4FF] [&_th]:text-[#0F172A] [&_th]:font-semibold [&_th]:text-xs [&_th]:p-3 [&_th]:text-left [&_td]:p-3 [&_td]:border-b [&_td]:border-[#E2E8F0] [&_td]:text-xs [&_td]:text-[#475569]">
         {children}
       </div>
     </div>
@@ -86,7 +86,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 
 function ContactBox({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-white/4 border border-white/8 rounded-xl p-5 space-y-1 text-[#9090B8] text-sm">
+    <div className="bg-[#F8FAFF] border border-[#E2E8F0] rounded-xl p-5 space-y-1 text-[#475569] text-sm">
       {children}
     </div>
   )
@@ -94,7 +94,7 @@ function ContactBox({ children }: { children: React.ReactNode }) {
 
 function Footer({ line1, line2 }: { line1: string; line2: string }) {
   return (
-    <div className="mt-12 pt-8 border-t border-white/8 text-xs text-[#5A5A7A]">
+    <div className="mt-12 pt-8 border-t border-[#E2E8F0] text-xs text-[#94A3B8]">
       <p>{line1}</p>
       <p className="mt-1">{line2}</p>
     </div>
@@ -106,10 +106,10 @@ function Footer({ line1, line2 }: { line1: string; line2: string }) {
 function PrivacyKO() {
   return (
     <>
-      <div className="bg-[rgba(91,110,245,0.06)] border border-[rgba(91,110,245,0.2)] rounded-xl p-5 mb-10 text-sm text-[#9090B8] leading-relaxed">
-        <strong className="text-white">핵심 원칙:</strong> ScamLens AI는 문자 원문 및 전화번호 원문을 서버에 저장하지 않습니다.
+      <div className="bg-[rgba(91,110,245,0.06)] border border-[rgba(91,110,245,0.2)] rounded-xl p-5 mb-10 text-sm text-[#64748B] leading-relaxed">
+        <strong className="text-[#0F172A]">핵심 원칙:</strong> ScamLens AI는 문자 원문 및 전화번호 원문을 서버에 저장하지 않습니다.
         모든 분석은 기기에서 처리되며, 서버에는 암호화된 해시값과 위험도 분류 결과만 저장됩니다.
-        본 방침은 <strong className="text-white">개인정보 보호법(PIPA)</strong>을 준수하여 작성되었습니다.
+        본 방침은 <strong className="text-[#0F172A]">개인정보 보호법(PIPA)</strong>을 준수하여 작성되었습니다.
       </div>
 
       <Section title="제1조 (개인정보 수집 항목 및 목적)">
@@ -128,15 +128,15 @@ function PrivacyKO() {
             <tr><td>구독 상태</td><td>결제 서비스 연동</td><td>유료 서비스 제공</td></tr>
           </tbody>
         </table>
-        <p className="mt-4"><strong className="text-white">절대 수집하지 않는 정보:</strong> 문자 원문, 전화번호 원문, 주소, 금융정보, 위치정보</p>
+        <p className="mt-4"><strong className="text-[#0F172A]">절대 수집하지 않는 정보:</strong> 문자 원문, 전화번호 원문, 주소, 금융정보, 위치정보</p>
       </Section>
 
       <Section title="제2조 (개인정보 처리 원칙)">
         <ul>
-          <li><strong className="text-white">온디바이스 우선:</strong> 문자 분석은 사용자의 기기에서 수행되며, 원문은 기기 밖으로 전송되지 않습니다.</li>
-          <li><strong className="text-white">최소 수집:</strong> 서비스 제공에 필수적인 최소한의 정보만 수집합니다 (개인정보 보호법 제3조 제1항).</li>
-          <li><strong className="text-white">목적 외 사용 금지:</strong> 수집된 정보는 명시된 목적 외에 사용되지 않습니다 (개인정보 보호법 제3조 제2항).</li>
-          <li><strong className="text-white">재난안전문자 완전 제외:</strong> 국가 재난안전문자는 탐지 대상에서 제외되며 데이터가 수집되지 않습니다.</li>
+          <li><strong className="text-[#0F172A]">온디바이스 우선:</strong> 문자 분석은 사용자의 기기에서 수행되며, 원문은 기기 밖으로 전송되지 않습니다.</li>
+          <li><strong className="text-[#0F172A]">최소 수집:</strong> 서비스 제공에 필수적인 최소한의 정보만 수집합니다 (개인정보 보호법 제3조 제1항).</li>
+          <li><strong className="text-[#0F172A]">목적 외 사용 금지:</strong> 수집된 정보는 명시된 목적 외에 사용되지 않습니다 (개인정보 보호법 제3조 제2항).</li>
+          <li><strong className="text-[#0F172A]">재난안전문자 완전 제외:</strong> 국가 재난안전문자는 탐지 대상에서 제외되며 데이터가 수집되지 않습니다.</li>
         </ul>
       </Section>
 
@@ -179,7 +179,7 @@ function PrivacyKO() {
       </Section>
 
       <Section title="제6조 (정보주체의 권리)">
-        <p>사용자는 언제든지 아래의 권리를 행사할 수 있으며, 요청일로부터 <strong className="text-white">10일 이내</strong>에 처리합니다.</p>
+        <p>사용자는 언제든지 아래의 권리를 행사할 수 있으며, 요청일로부터 <strong className="text-[#0F172A]">10일 이내</strong>에 처리합니다.</p>
         <ul>
           <li>개인정보 열람 요청 (개인정보 보호법 제35조)</li>
           <li>개인정보 정정·삭제 요청 (제36조)</li>
@@ -187,15 +187,15 @@ function PrivacyKO() {
           <li>동의 철회</li>
         </ul>
         <p>권리 행사는 앱 내 설정 메뉴 또는 개인정보 보호책임자 이메일로 요청하십시오. 앱 삭제 시 기기 내 데이터는 즉시 삭제되며, 서버 데이터 삭제는 이메일로 요청하실 수 있습니다.</p>
-        <p className="mt-2">권리 행사에 관한 불만이 있으신 경우 <strong className="text-white">개인정보보호위원회</strong> (privacy.go.kr / 국번없이 182)에 신고하실 수 있습니다.</p>
+        <p className="mt-2">권리 행사에 관한 불만이 있으신 경우 <strong className="text-[#0F172A]">개인정보보호위원회</strong> (privacy.go.kr / 국번없이 182)에 신고하실 수 있습니다.</p>
       </Section>
 
       <Section title="제7조 (개인정보의 안전성 확보 조치)">
         <ul>
-          <li><strong className="text-white">단방향 암호화:</strong> 수집되는 모든 해시값은 SHA-256으로 암호화되어 원문 복원이 불가능합니다.</li>
-          <li><strong className="text-white">전송 구간 암호화:</strong> 모든 서버 통신은 TLS 1.2 이상의 HTTPS로 암호화됩니다.</li>
-          <li><strong className="text-white">접근 제한:</strong> 개인정보 처리 시스템에 대한 접근 권한을 업무 담당자로 최소화합니다.</li>
-          <li><strong className="text-white">온디바이스 설계:</strong> 원본 데이터 서버 전송 자체를 아키텍처 설계 단계에서 차단합니다.</li>
+          <li><strong className="text-[#0F172A]">단방향 암호화:</strong> 수집되는 모든 해시값은 SHA-256으로 암호화되어 원문 복원이 불가능합니다.</li>
+          <li><strong className="text-[#0F172A]">전송 구간 암호화:</strong> 모든 서버 통신은 TLS 1.2 이상의 HTTPS로 암호화됩니다.</li>
+          <li><strong className="text-[#0F172A]">접근 제한:</strong> 개인정보 처리 시스템에 대한 접근 권한을 업무 담당자로 최소화합니다.</li>
+          <li><strong className="text-[#0F172A]">온디바이스 설계:</strong> 원본 데이터 서버 전송 자체를 아키텍처 설계 단계에서 차단합니다.</li>
         </ul>
       </Section>
 
@@ -218,16 +218,16 @@ function PrivacyKO() {
 
       <Section title="제10조 (개인정보 보호책임자)">
         <ContactBox>
-          <p><strong className="text-white">개인정보 보호책임자</strong></p>
+          <p><strong className="text-[#0F172A]">개인정보 보호책임자</strong></p>
           <p>이름: Jay Park</p>
           <p>소속: Vibe A</p>
           <p>이메일: privacy@vibeacorp.com</p>
-          <p className="text-xs text-[#5A5A7A] pt-2">개인정보 관련 문의, 불만, 피해 구제 요청은 위 이메일로 접수하실 수 있습니다. 처리 결과가 만족스럽지 않으실 경우 개인정보보호위원회(privacy.go.kr)에 심의를 신청하실 수 있습니다.</p>
+          <p className="text-xs text-[#94A3B8] pt-2">개인정보 관련 문의, 불만, 피해 구제 요청은 위 이메일로 접수하실 수 있습니다. 처리 결과가 만족스럽지 않으실 경우 개인정보보호위원회(privacy.go.kr)에 심의를 신청하실 수 있습니다.</p>
         </ContactBox>
       </Section>
 
       <Section title="제11조 (방침 변경)">
-        <p>본 방침은 법령·서비스 변경 시 개정될 수 있습니다. 중요한 변경이 있을 경우 시행 <strong className="text-white">7일 전</strong>에 앱 내 공지 및 이메일로 안내합니다.</p>
+        <p>본 방침은 법령·서비스 변경 시 개정될 수 있습니다. 중요한 변경이 있을 경우 시행 <strong className="text-[#0F172A]">7일 전</strong>에 앱 내 공지 및 이메일로 안내합니다.</p>
       </Section>
 
       <Footer line1="시행일: 2026년 4월 19일" line2="Vibe A · ScamLens AI · 개인정보처리방침" />
@@ -240,9 +240,9 @@ function PrivacyKO() {
 function PrivacyEN() {
   return (
     <>
-      <div className="bg-[rgba(91,110,245,0.06)] border border-[rgba(91,110,245,0.2)] rounded-xl p-5 mb-10 text-sm text-[#9090B8] leading-relaxed">
-        <strong className="text-white">Privacy-First by Design.</strong> ScamLens AI never stores the raw text of your messages or your raw phone number. All analysis runs on your device; only cryptographic hashes and risk-level classifications leave it.
-        This Policy is governed by the laws of the <strong className="text-white">State of California, United States</strong> and complies with the <strong className="text-white">California Consumer Privacy Act (CCPA/CPRA)</strong> and CalOPPA.
+      <div className="bg-[rgba(91,110,245,0.06)] border border-[rgba(91,110,245,0.2)] rounded-xl p-5 mb-10 text-sm text-[#64748B] leading-relaxed">
+        <strong className="text-[#0F172A]">Privacy-First by Design.</strong> ScamLens AI never stores the raw text of your messages or your raw phone number. All analysis runs on your device; only cryptographic hashes and risk-level classifications leave it.
+        This Policy is governed by the laws of the <strong className="text-[#0F172A]">State of California, United States</strong> and complies with the <strong className="text-[#0F172A]">California Consumer Privacy Act (CCPA/CPRA)</strong> and CalOPPA.
       </div>
 
       <Section title="1. Information We Collect">
@@ -261,7 +261,7 @@ function PrivacyEN() {
             <tr><td>Subscription status</td><td>Payment service integration</td><td>Paid service delivery</td></tr>
           </tbody>
         </table>
-        <p className="mt-4"><strong className="text-white">Data we never collect:</strong> raw message text, raw phone numbers, precise geolocation, financial account details, Social Security numbers.</p>
+        <p className="mt-4"><strong className="text-[#0F172A]">Data we never collect:</strong> raw message text, raw phone numbers, precise geolocation, financial account details, Social Security numbers.</p>
       </Section>
 
       <Section title="2. How We Use Information">
@@ -272,34 +272,34 @@ function PrivacyEN() {
           <li>To process subscriptions and authenticate users</li>
           <li>To comply with legal obligations</li>
         </ul>
-        <p className="mt-2">We do <strong className="text-white">not</strong> use your data for targeted advertising. We do <strong className="text-white">not</strong> sell, rent, or share your personal information with third parties for their own marketing purposes.</p>
+        <p className="mt-2">We do <strong className="text-[#0F172A]">not</strong> use your data for targeted advertising. We do <strong className="text-[#0F172A]">not</strong> sell, rent, or share your personal information with third parties for their own marketing purposes.</p>
       </Section>
 
       <Section title="3. Disclosure of Information">
         <p>We share data only in the following limited circumstances:</p>
         <ul>
-          <li><strong className="text-white">Service providers (processors):</strong> Supabase Inc. (hash/risk storage), Google Cloud Platform (Cloud Run AI), Google Gemini API (normalized text only — deleted after analysis per DPA). These parties are contractually prohibited from using your data for any other purpose.</li>
-          <li><strong className="text-white">Legal process:</strong> We may disclose data when required by valid court order, subpoena, or applicable law. We will notify you unless prohibited by law.</li>
-          <li><strong className="text-white">Business transfers:</strong> In a merger or acquisition, your data may transfer to the successor entity subject to the same privacy commitments.</li>
+          <li><strong className="text-[#0F172A]">Service providers (processors):</strong> Supabase Inc. (hash/risk storage), Google Cloud Platform (Cloud Run AI), Google Gemini API (normalized text only — deleted after analysis per DPA). These parties are contractually prohibited from using your data for any other purpose.</li>
+          <li><strong className="text-[#0F172A]">Legal process:</strong> We may disclose data when required by valid court order, subpoena, or applicable law. We will notify you unless prohibited by law.</li>
+          <li><strong className="text-[#0F172A]">Business transfers:</strong> In a merger or acquisition, your data may transfer to the successor entity subject to the same privacy commitments.</li>
         </ul>
       </Section>
 
       <Section title="4. California Privacy Rights (CCPA / CPRA)">
         <p>If you are a California resident, you have the following rights:</p>
         <ul>
-          <li><strong className="text-white">Right to Know:</strong> You may request disclosure of the categories and specific pieces of personal information we have collected about you, the sources, our business purpose, and the categories of third parties with whom we share it.</li>
-          <li><strong className="text-white">Right to Delete:</strong> You may request deletion of personal information we have collected, subject to certain exceptions (e.g., legal obligations).</li>
-          <li><strong className="text-white">Right to Correct:</strong> You may request correction of inaccurate personal information.</li>
-          <li><strong className="text-white">Right to Opt-Out of Sale or Sharing:</strong> We do <strong className="text-white">not</strong> sell or share your personal information for cross-context behavioral advertising. No opt-out is needed, but you may request confirmation at any time.</li>
-          <li><strong className="text-white">Right to Limit Sensitive Personal Information:</strong> We do not use sensitive personal information beyond what is necessary to provide the Service.</li>
-          <li><strong className="text-white">Right to Non-Discrimination:</strong> We will not discriminate against you for exercising any of these rights. We will not deny Service, charge different prices, or provide a different quality of service.</li>
+          <li><strong className="text-[#0F172A]">Right to Know:</strong> You may request disclosure of the categories and specific pieces of personal information we have collected about you, the sources, our business purpose, and the categories of third parties with whom we share it.</li>
+          <li><strong className="text-[#0F172A]">Right to Delete:</strong> You may request deletion of personal information we have collected, subject to certain exceptions (e.g., legal obligations).</li>
+          <li><strong className="text-[#0F172A]">Right to Correct:</strong> You may request correction of inaccurate personal information.</li>
+          <li><strong className="text-[#0F172A]">Right to Opt-Out of Sale or Sharing:</strong> We do <strong className="text-[#0F172A]">not</strong> sell or share your personal information for cross-context behavioral advertising. No opt-out is needed, but you may request confirmation at any time.</li>
+          <li><strong className="text-[#0F172A]">Right to Limit Sensitive Personal Information:</strong> We do not use sensitive personal information beyond what is necessary to provide the Service.</li>
+          <li><strong className="text-[#0F172A]">Right to Non-Discrimination:</strong> We will not discriminate against you for exercising any of these rights. We will not deny Service, charge different prices, or provide a different quality of service.</li>
         </ul>
-        <p className="mt-3">To exercise your rights, contact us at <strong className="text-white">privacy@vibeacorp.com</strong>. We will respond within <strong className="text-white">45 days</strong> (extendable by an additional 45 days with notice). We may verify your identity before fulfilling a request. You may designate an authorized agent to submit requests on your behalf.</p>
+        <p className="mt-3">To exercise your rights, contact us at <strong className="text-[#0F172A]">privacy@vibeacorp.com</strong>. We will respond within <strong className="text-[#0F172A]">45 days</strong> (extendable by an additional 45 days with notice). We may verify your identity before fulfilling a request. You may designate an authorized agent to submit requests on your behalf.</p>
         <p className="mt-2 text-xs">California&rsquo;s &ldquo;Shine the Light&rdquo; law (Civil Code § 1798.83) entitles California residents to request, once per calendar year, information about disclosures to third parties for direct marketing purposes. We do not make such disclosures.</p>
       </Section>
 
       <Section title="5. &ldquo;Do Not Sell or Share My Personal Information&rdquo;">
-        <p>We do <strong className="text-white">not</strong> sell or share personal information as defined under CCPA/CPRA. We do not engage in cross-context behavioral advertising. If you have questions, email <strong className="text-white">privacy@vibeacorp.com</strong>.</p>
+        <p>We do <strong className="text-[#0F172A]">not</strong> sell or share personal information as defined under CCPA/CPRA. We do not engage in cross-context behavioral advertising. If you have questions, email <strong className="text-[#0F172A]">privacy@vibeacorp.com</strong>.</p>
       </Section>
 
       <Section title="6. Data Retention">
@@ -322,30 +322,30 @@ function PrivacyEN() {
       </Section>
 
       <Section title="8. Children's Privacy (COPPA)">
-        <p>The Service is not directed to children under 13. We do not knowingly collect personal information from children under 13. If we learn that we have inadvertently collected such information, we will delete it promptly. If you believe we have collected information from a child under 13, contact us at <strong className="text-white">privacy@vibeacorp.com</strong>.</p>
+        <p>The Service is not directed to children under 13. We do not knowingly collect personal information from children under 13. If we learn that we have inadvertently collected such information, we will delete it promptly. If you believe we have collected information from a child under 13, contact us at <strong className="text-[#0F172A]">privacy@vibeacorp.com</strong>.</p>
       </Section>
 
       <Section title="9. Security">
         <ul>
-          <li><strong className="text-white">Irreversible hashing:</strong> SHA-256 one-way hashes — raw data cannot be reconstructed.</li>
-          <li><strong className="text-white">Transit encryption:</strong> All communications use TLS 1.2 or higher.</li>
-          <li><strong className="text-white">Access controls:</strong> Personal data access is restricted to authorized personnel on a need-to-know basis.</li>
-          <li><strong className="text-white">Privacy by design:</strong> Raw message content is never transmitted beyond the device — enforced at the architecture level.</li>
+          <li><strong className="text-[#0F172A]">Irreversible hashing:</strong> SHA-256 one-way hashes — raw data cannot be reconstructed.</li>
+          <li><strong className="text-[#0F172A]">Transit encryption:</strong> All communications use TLS 1.2 or higher.</li>
+          <li><strong className="text-[#0F172A]">Access controls:</strong> Personal data access is restricted to authorized personnel on a need-to-know basis.</li>
+          <li><strong className="text-[#0F172A]">Privacy by design:</strong> Raw message content is never transmitted beyond the device — enforced at the architecture level.</li>
         </ul>
         <p className="mt-2 text-xs">No method of transmission or storage is 100% secure. In the event of a data breach affecting California residents, we will notify affected individuals and the California Attorney General as required by Civil Code § 1798.82.</p>
       </Section>
 
       <Section title="10. Your Privacy Contact">
         <ContactBox>
-          <p><strong className="text-white">Privacy Contact</strong></p>
+          <p><strong className="text-[#0F172A]">Privacy Contact</strong></p>
           <p>Vibe A</p>
           <p>Email: privacy@vibeacorp.com</p>
-          <p className="text-xs text-[#5A5A7A] pt-2">For privacy-related inquiries, rights requests, or complaints. We respond within 45 days for CCPA requests. California residents may also contact the California Privacy Protection Agency (cppa.ca.gov) or the California Attorney General.</p>
+          <p className="text-xs text-[#94A3B8] pt-2">For privacy-related inquiries, rights requests, or complaints. We respond within 45 days for CCPA requests. California residents may also contact the California Privacy Protection Agency (cppa.ca.gov) or the California Attorney General.</p>
         </ContactBox>
       </Section>
 
       <Section title="11. Changes to This Policy">
-        <p>We may update this Policy as laws or the Service change. For material changes, we will provide at least <strong className="text-white">30 days&rsquo; notice</strong> via in-app notification or email before the change takes effect. Continued use after the effective date constitutes acceptance. If you do not agree, please discontinue use and contact us to delete your account.</p>
+        <p>We may update this Policy as laws or the Service change. For material changes, we will provide at least <strong className="text-[#0F172A]">30 days&rsquo; notice</strong> via in-app notification or email before the change takes effect. Continued use after the effective date constitutes acceptance. If you do not agree, please discontinue use and contact us to delete your account.</p>
       </Section>
 
       <Footer line1="Effective Date: April 19, 2026" line2="Vibe A · ScamLens AI · Privacy Policy · California Law" />
@@ -358,9 +358,9 @@ function PrivacyEN() {
 function PrivacyTW() {
   return (
     <>
-      <div className="bg-[rgba(91,110,245,0.06)] border border-[rgba(91,110,245,0.2)] rounded-xl p-5 mb-10 text-sm text-[#9090B8] leading-relaxed">
-        <strong className="text-white">核心原則：</strong>ScamLens AI 不在伺服器儲存您的原始簡訊內容或電話號碼。所有分析均在您的裝置上執行，伺服器僅保存加密雜湊值及風險等級分類結果。
-        本隱私權政策依據<strong className="text-white">中華民國個人資料保護法（個資法）</strong>制定。
+      <div className="bg-[rgba(91,110,245,0.06)] border border-[rgba(91,110,245,0.2)] rounded-xl p-5 mb-10 text-sm text-[#64748B] leading-relaxed">
+        <strong className="text-[#0F172A]">核心原則：</strong>ScamLens AI 不在伺服器儲存您的原始簡訊內容或電話號碼。所有分析均在您的裝置上執行，伺服器僅保存加密雜湊值及風險等級分類結果。
+        本隱私權政策依據<strong className="text-[#0F172A]">中華民國個人資料保護法（個資法）</strong>制定。
       </div>
 
       <Section title="第一條（蒐集目的告知）">
@@ -379,29 +379,29 @@ function PrivacyTW() {
             <tr><td>訂閱狀態</td><td>付款服務串接</td><td>付費服務提供</td></tr>
           </tbody>
         </table>
-        <p className="mt-4"><strong className="text-white">絕不蒐集：</strong>簡訊原文、電話號碼原碼、地址、金融帳戶資訊</p>
+        <p className="mt-4"><strong className="text-[#0F172A]">絕不蒐集：</strong>簡訊原文、電話號碼原碼、地址、金融帳戶資訊</p>
       </Section>
 
       <Section title="第二條（個人資料處理原則）">
         <ul>
-          <li><strong className="text-white">裝置端優先：</strong>簡訊分析於使用者裝置執行，原文不傳送至外部伺服器。</li>
-          <li><strong className="text-white">最小蒐集：</strong>僅蒐集服務所必要之最小限度資料（個資法第5條）。</li>
-          <li><strong className="text-white">目的限制：</strong>蒐集之資料不得逾越蒐集目的之必要範圍（個資法第5條）。</li>
-          <li><strong className="text-white">災防簡訊豁免：</strong>國家災防緊急通報簡訊完全排除於偵測範圍外，不蒐集任何資料。</li>
+          <li><strong className="text-[#0F172A]">裝置端優先：</strong>簡訊分析於使用者裝置執行，原文不傳送至外部伺服器。</li>
+          <li><strong className="text-[#0F172A]">最小蒐集：</strong>僅蒐集服務所必要之最小限度資料（個資法第5條）。</li>
+          <li><strong className="text-[#0F172A]">目的限制：</strong>蒐集之資料不得逾越蒐集目的之必要範圍（個資法第5條）。</li>
+          <li><strong className="text-[#0F172A]">災防簡訊豁免：</strong>國家災防緊急通報簡訊完全排除於偵測範圍外，不蒐集任何資料。</li>
         </ul>
       </Section>
 
       <Section title="第三條（當事人之權利）">
-        <p>依個資法第3條，您得隨時向本公司行使下列權利，本公司將於<strong className="text-white">15個工作日內</strong>回覆：</p>
+        <p>依個資法第3條，您得隨時向本公司行使下列權利，本公司將於<strong className="text-[#0F172A]">15個工作日內</strong>回覆：</p>
         <ul>
-          <li><strong className="text-white">查詢或閱覽：</strong>您可要求查詢本公司保有之您的個人資料（個資法第3條第1款）。</li>
-          <li><strong className="text-white">製給複製本：</strong>您可要求本公司提供您個人資料之複製（個資法第3條第1款）。</li>
-          <li><strong className="text-white">補充或更正：</strong>您可要求更正不正確之個人資料（個資法第3條第2款）。</li>
-          <li><strong className="text-white">停止蒐集、處理或利用：</strong>您可要求停止蒐集、處理或利用您的個人資料（個資法第3條第4款）。</li>
-          <li><strong className="text-white">刪除：</strong>您可要求刪除本公司保有之您的個人資料（個資法第3條第5款）。</li>
+          <li><strong className="text-[#0F172A]">查詢或閱覽：</strong>您可要求查詢本公司保有之您的個人資料（個資法第3條第1款）。</li>
+          <li><strong className="text-[#0F172A]">製給複製本：</strong>您可要求本公司提供您個人資料之複製（個資法第3條第1款）。</li>
+          <li><strong className="text-[#0F172A]">補充或更正：</strong>您可要求更正不正確之個人資料（個資法第3條第2款）。</li>
+          <li><strong className="text-[#0F172A]">停止蒐集、處理或利用：</strong>您可要求停止蒐集、處理或利用您的個人資料（個資法第3條第4款）。</li>
+          <li><strong className="text-[#0F172A]">刪除：</strong>您可要求刪除本公司保有之您的個人資料（個資法第3條第5款）。</li>
         </ul>
-        <p className="mt-2">請將權利行使請求寄至：<strong className="text-white">privacy@vibeacorp.com</strong></p>
-        <p className="mt-2">如對本公司之處理結果不滿意，您可向<strong className="text-white">個人資料保護委員會</strong>（pdpc.gov.tw）提出申訴，或依個資法第51條提起訴訟。</p>
+        <p className="mt-2">請將權利行使請求寄至：<strong className="text-[#0F172A]">privacy@vibeacorp.com</strong></p>
+        <p className="mt-2">如對本公司之處理結果不滿意，您可向<strong className="text-[#0F172A]">個人資料保護委員會</strong>（pdpc.gov.tw）提出申訴，或依個資法第51條提起訴訟。</p>
       </Section>
 
       <Section title="第四條（個人資料之利用期間、地區、對象及方式）">
@@ -440,10 +440,10 @@ function PrivacyTW() {
 
       <Section title="第六條（安全維護措施）">
         <ul>
-          <li><strong className="text-white">單向雜湊加密：</strong>所有雜湊值採用 SHA-256 加密，無法還原原文。</li>
-          <li><strong className="text-white">傳輸加密：</strong>所有伺服器通訊使用 TLS 1.2 以上之 HTTPS 加密。</li>
-          <li><strong className="text-white">存取控制：</strong>個人資料存取僅限授權人員，並依最小權限原則管理。</li>
-          <li><strong className="text-white">隱私設計：</strong>原始簡訊資料於架構設計層面即阻止傳送至外部伺服器。</li>
+          <li><strong className="text-[#0F172A]">單向雜湊加密：</strong>所有雜湊值採用 SHA-256 加密，無法還原原文。</li>
+          <li><strong className="text-[#0F172A]">傳輸加密：</strong>所有伺服器通訊使用 TLS 1.2 以上之 HTTPS 加密。</li>
+          <li><strong className="text-[#0F172A]">存取控制：</strong>個人資料存取僅限授權人員，並依最小權限原則管理。</li>
+          <li><strong className="text-[#0F172A]">隱私設計：</strong>原始簡訊資料於架構設計層面即阻止傳送至外部伺服器。</li>
         </ul>
       </Section>
 
@@ -453,16 +453,16 @@ function PrivacyTW() {
 
       <Section title="第八條（個人資料保護聯絡方式）">
         <ContactBox>
-          <p><strong className="text-white">個人資料管理負責人</strong></p>
+          <p><strong className="text-[#0F172A]">個人資料管理負責人</strong></p>
           <p>姓名：Jay Park</p>
           <p>公司：Vibe A</p>
           <p>電子郵件：privacy@vibeacorp.com</p>
-          <p className="text-xs text-[#5A5A7A] pt-2">如有個人資料相關問題、申訴或權利行使請求，請以電子郵件聯絡。若對本公司處理結果不滿意，您可向個人資料保護委員會（pdpc.gov.tw）提出申訴。</p>
+          <p className="text-xs text-[#94A3B8] pt-2">如有個人資料相關問題、申訴或權利行使請求，請以電子郵件聯絡。若對本公司處理結果不滿意，您可向個人資料保護委員會（pdpc.gov.tw）提出申訴。</p>
         </ContactBox>
       </Section>
 
       <Section title="第九條（政策修訂）">
-        <p>本政策因法規或服務變更時得予修訂。重大修訂時，本公司將於生效日前<strong className="text-white">7日</strong>透過應用程式內通知或電子郵件告知。繼續使用本服務即視為同意修訂後之條款。</p>
+        <p>本政策因法規或服務變更時得予修訂。重大修訂時，本公司將於生效日前<strong className="text-[#0F172A]">7日</strong>透過應用程式內通知或電子郵件告知。繼續使用本服務即視為同意修訂後之條款。</p>
       </Section>
 
       <Footer line1="生效日期：2026年4月19日" line2="Vibe A · ScamLens AI · 隱私權政策 · 適用中華民國法律" />
