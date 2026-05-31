@@ -126,9 +126,12 @@ function PrivacyKO() {
             <tr><td>익명화된 기기 식별자</td><td>앱 설치 시 자동 생성</td><td>중복 신고 방지</td></tr>
             <tr><td>소셜 로그인 고유번호 및 이메일</td><td>구글/카카오 로그인 시</td><td>회원 식별, 유료 서비스 제공</td></tr>
             <tr><td>구독 상태</td><td>결제 서비스 연동</td><td>유료 서비스 제공</td></tr>
+            <tr><td>광고 식별자(GAID)</td><td>Google AdMob SDK 자동 수집</td><td>광고 표시 및 광고 사기 방지</td></tr>
+            <tr><td>알림 내용(제목·본문)</td><td>알림 접근 권한으로 자동 수집</td><td>온디바이스 AI 스팸·피싱 분석 (분석 즉시 폐기, 서버 미전송)</td></tr>
+            <tr><td>설치된 앱 목록</td><td>앱 목록 조회 권한으로 자동 수집</td><td>앱 안전성 검사(앱체크) 기능 제공 (기기 내 처리, 서버 미전송)</td></tr>
           </tbody>
         </table>
-        <p className="mt-4"><strong className="text-[#0F172A]">절대 수집하지 않는 정보:</strong> 문자 원문, 전화번호 원문, 주소, 금융정보, 위치정보</p>
+        <p className="mt-4"><strong className="text-[#0F172A]">절대 저장·전송하지 않는 정보:</strong> 문자·알림 원문(분석 즉시 폐기), 전화번호 원문, 주소, 금융정보, 위치정보</p>
       </Section>
 
       <Section title="제2조 (개인정보 처리 원칙)">
@@ -137,6 +140,13 @@ function PrivacyKO() {
           <li><strong className="text-[#0F172A]">최소 수집:</strong> 서비스 제공에 필수적인 최소한의 정보만 수집합니다 (개인정보 보호법 제3조 제1항).</li>
           <li><strong className="text-[#0F172A]">목적 외 사용 금지:</strong> 수집된 정보는 명시된 목적 외에 사용되지 않습니다 (개인정보 보호법 제3조 제2항).</li>
           <li><strong className="text-[#0F172A]">재난안전문자 완전 제외:</strong> 국가 재난안전문자는 탐지 대상에서 제외되며 데이터가 수집되지 않습니다.</li>
+        </ul>
+        <p className="mt-5 font-semibold text-[#0F172A]">앱 접근 권한 및 AI 분석 처리 흐름</p>
+        <ul className="mt-2">
+          <li><strong className="text-[#0F172A]">알림 접근 권한(NotificationListenerService):</strong> 앱은 안드로이드 알림 접근 권한을 통해 SMS·카카오톡·WhatsApp·LINE 등 메시지 앱의 알림 제목과 본문을 읽습니다. 읽은 내용은 즉시 온디바이스 AI가 분석하며, 원문은 분석 완료 즉시 폐기됩니다. 서버에는 해시값과 위험도 분류 결과만 전송됩니다.</li>
+          <li><strong className="text-[#0F172A]">앱 목록 조회 권한(앱체크 기능):</strong> 앱체크 기능 사용 시 설치된 앱 목록을 기기 내에서 조회합니다. 앱 목록은 기기 내에서만 분석되며 서버로 전송되지 않습니다.</li>
+          <li><strong className="text-[#0F172A]">AI 분석 처리 흐름:</strong> ① 알림 수신 → ② 온디바이스 TFLite 모델 1차 분석 → ③ 위험도 점수 20점 이상 시 Cloud Run으로 정규화 텍스트 전송(발신자 정보 제거) → ④ 점수 20~69점 구간의 프리미엄 사용자에 한해 Gemini AI 심층 분석 요청(정규화 텍스트만 전송, 분석 즉시 삭제)</li>
+          <li><strong className="text-[#0F172A]">재부팅 자동 실행 및 백그라운드 상시 실행:</strong> 앱은 기기 재부팅 후 자동으로 시작되어 메시지 알림을 상시 모니터링합니다. 이는 실시간 보호 기능 제공을 위해 필요하며, 설정에서 알림 접근 권한을 해제하면 모니터링이 즉시 중단됩니다.</li>
         </ul>
       </Section>
 
@@ -173,9 +183,10 @@ function PrivacyKO() {
             <tr><td>Supabase Inc.</td><td>해시값·분류 결과 저장 (분석 캐시)</td><td>위탁 계약 종료 시</td></tr>
             <tr><td>Google Cloud Platform</td><td>Cloud Run 서버 운영 (유료 AI 분석)</td><td>위탁 계약 종료 시</td></tr>
             <tr><td>Google LLC (Gemini API)</td><td>유료 사용자 심층 AI 분석 (정규화 텍스트만 전송)</td><td>분석 완료 후 즉시 삭제</td></tr>
+            <tr><td>Google LLC (AdMob)</td><td>광고 표시, 광고 성과 측정, 광고 사기 방지</td><td>위탁 계약 종료 시</td></tr>
           </tbody>
         </table>
-        <p className="mt-2 text-xs">Gemini API로 전송되는 텍스트는 발신자 정보가 제거된 정규화 텍스트이며, Google DPA에 따라 AI 학습 데이터로 사용되지 않습니다.</p>
+        <p className="mt-2 text-xs">Gemini API로 전송되는 텍스트는 발신자 정보가 제거된 정규화 텍스트이며, Google DPA에 따라 AI 학습 데이터로 사용되지 않습니다. AdMob은 광고 식별자(GAID)를 수집하며, 기기 설정에서 광고 ID를 초기화하거나 맞춤 광고를 거부할 수 있습니다.</p>
       </Section>
 
       <Section title="제6조 (정보주체의 권리)">
@@ -208,6 +219,7 @@ function PrivacyKO() {
           <tbody>
             <tr><td>미국</td><td>Supabase Inc.</td><td>해시값, 위험도</td><td>분석 캐시</td></tr>
             <tr><td>미국</td><td>Google Cloud / Gemini</td><td>정규화 텍스트 (원문 아님)</td><td>AI 분석</td></tr>
+            <tr><td>미국</td><td>Google LLC (AdMob)</td><td>광고 식별자(GAID), 기기 정보</td><td>광고 표시</td></tr>
           </tbody>
         </table>
       </Section>
@@ -259,9 +271,12 @@ function PrivacyEN() {
             <tr><td>Anonymous device identifier</td><td>Generated at install</td><td>Duplicate-report prevention</td></tr>
             <tr><td>Social login UID and email</td><td>Google / Kakao sign-in</td><td>Account identification, paid service</td></tr>
             <tr><td>Subscription status</td><td>Payment service integration</td><td>Paid service delivery</td></tr>
+            <tr><td>Advertising ID (GAID)</td><td>Google AdMob SDK, automatic</td><td>Ad delivery and fraud prevention</td></tr>
+            <tr><td>Notification content (title &amp; body)</td><td>Notification access permission, automatic</td><td>On-device AI spam/phishing analysis (discarded immediately after analysis, never sent to server)</td></tr>
+            <tr><td>Installed app list</td><td>App list permission, automatic</td><td>App Safety Check feature (processed on-device only, never sent to server)</td></tr>
           </tbody>
         </table>
-        <p className="mt-4"><strong className="text-[#0F172A]">Data we never collect:</strong> raw message text, raw phone numbers, precise geolocation, financial account details, Social Security numbers.</p>
+        <p className="mt-4"><strong className="text-[#0F172A]">Data we never store or transmit:</strong> raw message/notification text (discarded immediately after analysis), raw phone numbers, precise geolocation, financial account details, Social Security numbers.</p>
       </Section>
 
       <Section title="2. How We Use Information">
@@ -273,12 +288,19 @@ function PrivacyEN() {
           <li>To comply with legal obligations</li>
         </ul>
         <p className="mt-2">We do <strong className="text-[#0F172A]">not</strong> use your data for targeted advertising. We do <strong className="text-[#0F172A]">not</strong> sell, rent, or share your personal information with third parties for their own marketing purposes.</p>
+        <p className="mt-5 font-semibold text-[#0F172A]">App Permissions &amp; AI Analysis Flow</p>
+        <ul className="mt-2">
+          <li><strong className="text-[#0F172A]">Notification Access (NotificationListenerService):</strong> The app uses Android&apos;s notification access permission to read the title and body of notifications from SMS, KakaoTalk, WhatsApp, LINE, and other messaging apps. Notification content is immediately processed by the on-device AI and the raw text is discarded upon completion. Only hashes and risk classifications are transmitted to our servers.</li>
+          <li><strong className="text-[#0F172A]">App List Permission (App Safety Check):</strong> When you use the App Safety Check feature, the app reads your list of installed apps entirely on-device. This data is never transmitted to our servers.</li>
+          <li><strong className="text-[#0F172A]">AI Analysis Flow:</strong> ① Notification received → ② On-device TFLite model performs initial analysis → ③ If risk score ≥ 20, normalized text (sender info stripped) is sent to Cloud Run → ④ For premium users with risk scores 20–69, normalized text is sent to Gemini AI for deep analysis, then immediately deleted.</li>
+          <li><strong className="text-[#0F172A]">Auto-Start &amp; Background Operation:</strong> The app starts automatically after device reboot and runs persistently in the background to monitor incoming message notifications. You can stop this monitoring at any time by revoking the notification access permission in device settings.</li>
+        </ul>
       </Section>
 
       <Section title="3. Disclosure of Information">
         <p>We share data only in the following limited circumstances:</p>
         <ul>
-          <li><strong className="text-[#0F172A]">Service providers (processors):</strong> Supabase Inc. (hash/risk storage), Google Cloud Platform (Cloud Run AI), Google Gemini API (normalized text only — deleted after analysis per DPA). These parties are contractually prohibited from using your data for any other purpose.</li>
+          <li><strong className="text-[#0F172A]">Service providers (processors):</strong> Supabase Inc. (hash/risk storage), Google Cloud Platform (Cloud Run AI), Google Gemini API (normalized text only — deleted after analysis per DPA), Google AdMob (advertising ID and device info for ad delivery and fraud prevention). These parties are contractually prohibited from using your data for any other purpose. You may reset your Advertising ID or opt out of personalized ads in your device settings.</li>
           <li><strong className="text-[#0F172A]">Legal process:</strong> We may disclose data when required by valid court order, subpoena, or applicable law. We will notify you unless prohibited by law.</li>
           <li><strong className="text-[#0F172A]">Business transfers:</strong> In a merger or acquisition, your data may transfer to the successor entity subject to the same privacy commitments.</li>
         </ul>
@@ -313,6 +335,7 @@ function PrivacyEN() {
             <tr><td>Social login credentials</td><td>Deleted upon account deletion</td></tr>
             <tr><td>Device identifier</td><td>Deleted upon app uninstall or withdrawal of consent</td></tr>
             <tr><td>Gemini API analysis text</td><td>Deleted immediately after analysis</td></tr>
+            <tr><td>Advertising ID (GAID)</td><td>Managed by Google AdMob per its data retention policy; resettable in device settings</td></tr>
           </tbody>
         </table>
       </Section>
@@ -377,9 +400,12 @@ function PrivacyTW() {
             <tr><td>匿名裝置識別碼</td><td>安裝時自動產生</td><td>防止重複檢舉</td></tr>
             <tr><td>社群登入 UID 及電子郵件</td><td>Google / Kakao 登入</td><td>帳號識別、付費服務</td></tr>
             <tr><td>訂閱狀態</td><td>付款服務串接</td><td>付費服務提供</td></tr>
+            <tr><td>廣告識別碼（GAID）</td><td>Google AdMob SDK 自動蒐集</td><td>廣告投放及廣告詐欺防範</td></tr>
+            <tr><td>通知內容（標題·內文）</td><td>通知存取權限自動蒐集</td><td>裝置端 AI 詐騙訊息分析（分析後立即銷毀，不傳送至伺服器）</td></tr>
+            <tr><td>已安裝應用程式清單</td><td>應用程式清單存取權限自動蒐集</td><td>應用程式安全檢查功能（僅限裝置端處理，不傳送至伺服器）</td></tr>
           </tbody>
         </table>
-        <p className="mt-4"><strong className="text-[#0F172A]">絕不蒐集：</strong>簡訊原文、電話號碼原碼、地址、金融帳戶資訊</p>
+        <p className="mt-4"><strong className="text-[#0F172A]">絕不儲存或傳送：</strong>簡訊·通知原文（分析後立即銷毀）、電話號碼原碼、地址、金融帳戶資訊</p>
       </Section>
 
       <Section title="第二條（個人資料處理原則）">
@@ -388,6 +414,13 @@ function PrivacyTW() {
           <li><strong className="text-[#0F172A]">最小蒐集：</strong>僅蒐集服務所必要之最小限度資料（個資法第5條）。</li>
           <li><strong className="text-[#0F172A]">目的限制：</strong>蒐集之資料不得逾越蒐集目的之必要範圍（個資法第5條）。</li>
           <li><strong className="text-[#0F172A]">災防簡訊豁免：</strong>國家災防緊急通報簡訊完全排除於偵測範圍外，不蒐集任何資料。</li>
+        </ul>
+        <p className="mt-5 font-semibold text-[#0F172A]">應用程式存取權限及 AI 分析處理流程</p>
+        <ul className="mt-2">
+          <li><strong className="text-[#0F172A]">通知存取權限（NotificationListenerService）：</strong>應用程式透過 Android 通知存取權限讀取 SMS、KakaoTalk、WhatsApp、LINE 等訊息應用程式之通知標題及內文。讀取之內容隨即由裝置端 AI 進行分析，原始內容於分析完成後立即銷毀。僅雜湊值及風險等級分類結果傳送至伺服器。</li>
+          <li><strong className="text-[#0F172A]">應用程式清單存取權限（應用程式安全檢查）：</strong>使用應用程式安全檢查功能時，應用程式於裝置端讀取已安裝之應用程式清單。此資料僅於裝置端分析，不傳送至伺服器。</li>
+          <li><strong className="text-[#0F172A]">AI 分析處理流程：</strong>① 收到通知 → ② 裝置端 TFLite 模型初步分析 → ③ 風險分數 ≥ 20 時，將正規化文字（已移除發送方資訊）傳送至 Cloud Run → ④ 付費用戶且分數介於 20～69 時，正規化文字傳送至 Gemini AI 進行深度分析，分析後立即刪除。</li>
+          <li><strong className="text-[#0F172A]">開機自動啟動及背景常駐執行：</strong>應用程式於裝置重新開機後自動啟動，並持續於背景監控傳入之訊息通知。您可隨時於裝置設定中撤銷通知存取權限以停止監控。</li>
         </ul>
       </Section>
 
@@ -414,9 +447,10 @@ function PrivacyTW() {
             <tr><td>訂閱付款紀錄</td><td>5年</td><td>消費者保護法第19條</td></tr>
             <tr><td>社群登入資訊</td><td>帳號刪除時立即刪除</td><td>當事人要求</td></tr>
             <tr><td>裝置識別碼</td><td>解除安裝或撤回同意時立即刪除</td><td>當事人要求</td></tr>
+            <tr><td>廣告識別碼（GAID）</td><td>依 AdMob 政策管理，可於裝置設定重設</td><td>廣告服務提供</td></tr>
           </tbody>
         </table>
-        <p className="mt-3">本公司將資料儲存於美國（Supabase Inc.、Google Cloud），並對受託方要求遵守個資法等同等級之資料保護義務。</p>
+        <p className="mt-3">本公司將資料儲存於美國（Supabase Inc.、Google Cloud、Google AdMob），並對受託方要求遵守個資法等同等級之資料保護義務。</p>
       </Section>
 
       <Section title="第五條（個人資料之第三方提供）">
@@ -434,8 +468,10 @@ function PrivacyTW() {
             <tr><td>Supabase Inc.（美國）</td><td>雜湊值、風險等級儲存</td><td>委託契約終止時</td></tr>
             <tr><td>Google Cloud Platform（美國）</td><td>Cloud Run 伺服器運作</td><td>委託契約終止時</td></tr>
             <tr><td>Google LLC — Gemini API（美國）</td><td>付費用戶深度 AI 分析（僅傳送正規化文字）</td><td>分析完成後立即刪除</td></tr>
+            <tr><td>Google LLC — AdMob（美國）</td><td>廣告投放、廣告效果評估、廣告詐欺防範</td><td>依 AdMob 資料保留政策，可於裝置設定重設</td></tr>
           </tbody>
         </table>
+        <p className="mt-2 text-xs">Gemini API 僅接收已移除發送方資訊之正規化文字，依 Google DPA 不用於 AI 訓練。AdMob 蒐集廣告識別碼（GAID），您可於裝置設定中重設廣告 ID 或拒絕個人化廣告。</p>
       </Section>
 
       <Section title="第六條（安全維護措施）">
