@@ -107,10 +107,11 @@ function TermsKO() {
 
       <Section title="제4조 (서비스의 제공)">
         <ul>
-          <li><strong className="text-[#0F172A]">무료 서비스:</strong> 온디바이스 AI 기반 스미싱·피싱 탐지, 위험도 알림, 기본 통계, 앱 안전성 검사</li>
-          <li><strong className="text-[#0F172A]">유료 서비스 (월 구독):</strong> Gemini AI 심층 분석, 상세 탐지 보고서, URL 안전성 검사</li>
+          <li><strong className="text-[#0F172A]">무료 서비스:</strong> 온디바이스 AI 기반 스미싱·피싱 탐지, 위험도 알림, 기본 통계, 앱 안전성 검사. 무료 서비스에는 Google AdMob을 통한 광고가 포함됩니다.</li>
+          <li><strong className="text-[#0F172A]">유료 서비스 (월 구독):</strong> Gemini AI 심층 분석, 상세 탐지 보고서, URL 안전성 검사, 광고 제거</li>
         </ul>
-        <p>서비스는 연중무휴 24시간 제공을 원칙으로 하되, 시스템 점검·불가항력적 사유로 일시 중단될 수 있습니다.</p>
+        <p className="mt-3"><strong className="text-[#0F172A]">서비스 동작 방식:</strong> 서비스는 안드로이드 알림 접근 권한(NotificationListenerService)을 이용하여 SMS·카카오톡·WhatsApp·LINE 등 메시지 앱의 알림을 실시간으로 분석합니다. 분석은 이용자의 기기에서 온디바이스 AI가 1차 처리하며, 위험도가 일정 수준 이상인 경우에만 정규화된 텍스트(원문 아님)가 회사 서버로 전송됩니다. 앱은 기기 재부팅 후 자동으로 시작되어 백그라운드에서 상시 실행되며, 이를 통해 실시간 보호 기능을 제공합니다. 앱체크 기능은 설치된 앱 목록을 기기 내에서만 분석합니다.</p>
+        <p className="mt-2">서비스는 연중무휴 24시간 제공을 원칙으로 하되, 시스템 점검·불가항력적 사유로 일시 중단될 수 있습니다.</p>
       </Section>
 
       <Section title="제5조 (유료 서비스 및 환불)">
@@ -141,7 +142,9 @@ function TermsKO() {
         </div>
         <ul>
           <li>온디바이스 AI의 특성상 신종 사기 수법을 즉시 탐지하지 못할 수 있습니다.</li>
+          <li>AI 분석 결과는 참고용이며, 금전 거래·개인정보 제공 등 중요한 결정은 이용자 본인이 판단하여야 합니다.</li>
           <li>회사는 서비스가 탐지하지 못한 스미싱으로 인한 피해에 대해 법률이 허용하는 범위 내에서 책임을 제한합니다.</li>
+          <li>알림 접근 권한 미허용 등 이용자 설정에 의해 서비스가 정상 동작하지 않는 경우 회사는 책임지지 않습니다.</li>
           <li>불가항력적 사유(천재지변, 사이버 공격, 통신 장애 등)로 인한 서비스 중단에 대해 책임지지 않습니다.</li>
         </ul>
       </Section>
@@ -194,10 +197,10 @@ function TermsEN() {
       </div>
 
       <Section title="1. About ScamLens AI">
-        <p>ScamLens AI is an AI-powered mobile application that detects spam, smishing, and phishing text messages. It uses on-device AI processing, meaning your message content is analyzed locally on your device and is not uploaded to our servers in its original form.</p>
+        <p>ScamLens AI is an AI-powered mobile application that detects spam, smishing, and phishing text messages. It uses Android&apos;s Notification Access permission (NotificationListenerService) to read notifications from SMS, KakaoTalk, WhatsApp, LINE, and other messaging apps in real time. Message content is analyzed locally on your device by an on-device AI model; only normalized text (with sender information removed) is transmitted to our servers when the risk score exceeds a set threshold. The app starts automatically after device reboot and runs persistently in the background to provide continuous protection. The App Safety Check feature analyzes your installed app list entirely on-device and never transmits it to our servers.</p>
         <div className="bg-[rgba(255,179,71,0.06)] border border-[rgba(255,179,71,0.2)] rounded-xl p-4 mt-4">
           <p className="text-[#FFB347] font-semibold text-xs mb-1">IMPORTANT DISCLAIMER</p>
-          <p>ScamLens AI is a <strong className="text-[#FFB347]">supplementary tool</strong>, not a guarantee of protection. AI detection is not 100% accurate. You should always exercise your own judgment. We are not responsible for losses arising from messages the Service fails to detect.</p>
+          <p>ScamLens AI is a <strong className="text-[#FFB347]">supplementary tool</strong>, not a guarantee of protection. AI detection is not 100% accurate. You should always exercise your own judgment before making financial transactions or sharing personal information. We are not responsible for losses arising from messages the Service fails to detect, or from your failure to grant the necessary permissions.</p>
         </div>
       </Section>
 
@@ -211,8 +214,8 @@ function TermsEN() {
 
       <Section title="3. Service Description & Plans">
         <ul>
-          <li><strong className="text-[#0F172A]">Free Plan:</strong> On-device AI detection, risk alerts, basic statistics, app safety scan.</li>
-          <li><strong className="text-[#0F172A]">Paid Plan (Monthly Subscription):</strong> Gemini AI deep analysis, detailed threat reports, URL safety scanning.</li>
+          <li><strong className="text-[#0F172A]">Free Plan:</strong> On-device AI detection, risk alerts, basic statistics, app safety scan. The free plan is supported by Google AdMob advertisements.</li>
+          <li><strong className="text-[#0F172A]">Paid Plan (Monthly Subscription):</strong> Gemini AI deep analysis, detailed threat reports, URL safety scanning, ad-free experience.</li>
         </ul>
         <p>We reserve the right to modify, suspend, or discontinue any aspect of the Service with reasonable notice.</p>
       </Section>
@@ -322,10 +325,11 @@ function TermsTW() {
 
       <Section title="第四條（服務內容）">
         <ul>
-          <li><strong className="text-[#0F172A]">免費服務：</strong>裝置端 AI 簡訊詐騙偵測、風險通知、基本統計、應用程式安全掃描</li>
-          <li><strong className="text-[#0F172A]">付費服務（月訂閱）：</strong>Gemini AI 深度分析、詳細偵測報告、網址安全性檢查</li>
+          <li><strong className="text-[#0F172A]">免費服務：</strong>裝置端 AI 簡訊詐騙偵測、風險通知、基本統計、應用程式安全掃描。免費服務包含由 Google AdMob 提供之廣告。</li>
+          <li><strong className="text-[#0F172A]">付費服務（月訂閱）：</strong>Gemini AI 深度分析、詳細偵測報告、網址安全性檢查、移除廣告</li>
         </ul>
-        <p>本服務原則上全年無休提供，惟因系統維護或不可抗力因素，得暫時中斷服務。</p>
+        <p className="mt-3"><strong className="text-[#0F172A]">服務運作方式：</strong>本服務透過 Android 通知存取權限（NotificationListenerService）即時讀取 SMS、KakaoTalk、WhatsApp、LINE 等訊息應用程式之通知內容，並由裝置端 AI 進行初步分析。僅當風險分數達到一定閾值時，才將正規化文字（非原文）傳送至本公司伺服器。應用程式於裝置重新開機後自動啟動並持續於背景執行，以提供即時保護。應用程式安全檢查功能僅於裝置端分析已安裝之應用程式清單，不傳送至伺服器。</p>
+        <p className="mt-2">本服務原則上全年無休提供，惟因系統維護或不可抗力因素，得暫時中斷服務。</p>
       </Section>
 
       <Section title="第五條（付費服務及退款）">
@@ -356,7 +360,9 @@ function TermsTW() {
         </div>
         <ul>
           <li>裝置端 AI 可能無法即時偵測新型詐騙手法。</li>
+          <li>AI 分析結果僅供參考，進行金融交易或提供個人資料等重要決定應由使用者自行判斷。</li>
           <li>本公司就本服務未能偵測之詐騙所造成之損失，於法律許可範圍內限制責任。</li>
+          <li>因使用者未授予通知存取等必要權限，導致服務無法正常運作，本公司不負賠償責任。</li>
           <li>因不可抗力事由（天災、網路攻擊、通訊障礙等）所致之服務中斷，本公司不負賠償責任。</li>
         </ul>
       </Section>
