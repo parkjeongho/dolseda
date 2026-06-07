@@ -16,9 +16,9 @@ export default function PrivacyPage() {
   ]
 
   const headerInfo: Record<Lang, { title: string; updated: string; subtitle: string }> = {
-    ko:    { title: "개인정보처리방침", updated: "2026년 4월 19일", subtitle: "시행일" },
-    en:    { title: "Privacy Policy",  updated: "April 19, 2026",  subtitle: "Effective Date" },
-    "zh-TW": { title: "隱私權政策",   updated: "2026年4月19日",   subtitle: "生效日期" },
+    ko:    { title: "개인정보처리방침", updated: "2026년 6월 7일", subtitle: "시행일" },
+    en:    { title: "Privacy Policy",  updated: "June 7, 2026",  subtitle: "Effective Date" },
+    "zh-TW": { title: "隱私權政策",   updated: "2026年6月7日",   subtitle: "生效日期" },
   }
 
   const h = headerInfo[lang]
@@ -242,7 +242,7 @@ function PrivacyKO() {
         <p>본 방침은 법령·서비스 변경 시 개정될 수 있습니다. 중요한 변경이 있을 경우 시행 <strong className="text-[#0F172A]">7일 전</strong>에 앱 내 공지 및 이메일로 안내합니다.</p>
       </Section>
 
-      <Footer line1="시행일: 2026년 4월 19일" line2="Vibe A · ScamLens AI · 개인정보처리방침" />
+      <Footer line1="시행일: 2026년 6월 7일" line2="Vibe A · ScamLens AI · 개인정보처리방침" />
     </>
   )
 }
@@ -371,7 +371,7 @@ function PrivacyEN() {
         <p>We may update this Policy as laws or the Service change. For material changes, we will provide at least <strong className="text-[#0F172A]">30 days&rsquo; notice</strong> via in-app notification or email before the change takes effect. Continued use after the effective date constitutes acceptance. If you do not agree, please discontinue use and contact us to delete your account.</p>
       </Section>
 
-      <Footer line1="Effective Date: April 19, 2026" line2="Vibe A · ScamLens AI · Privacy Policy · California Law" />
+      <Footer line1="Effective Date: June 7, 2026" line2="Vibe A · ScamLens AI · Privacy Policy · California Law" />
     </>
   )
 }
@@ -501,7 +501,7 @@ function PrivacyTW() {
         <p>本政策因法規或服務變更時得予修訂。重大修訂時，本公司將於生效日前<strong className="text-[#0F172A]">7日</strong>透過應用程式內通知或電子郵件告知。繼續使用本服務即視為同意修訂後之條款。</p>
       </Section>
 
-      <Footer line1="生效日期：2026年4月19日" line2="Vibe A · ScamLens AI · 隱私權政策 · 適用中華民國法律" />
+      <Footer line1="生效日期：2026年6月7日" line2="Vibe A · ScamLens AI · 隱私權政策 · 適用中華民國法律" />
     </>
   )
 }

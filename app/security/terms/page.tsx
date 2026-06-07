@@ -21,9 +21,9 @@ export default function TermsPage() {
     "zh-TW": "服務條款",
   }
   const dates: Record<Lang, string> = {
-    ko: "시행일: 2026년 5월 1일",
-    en: "Effective: May 1, 2026",
-    "zh-TW": "生效日期：2026年5月1日",
+    ko: "시행일: 2026년 6월 7일",
+    en: "Effective: June 7, 2026",
+    "zh-TW": "生效日期：2026年6月7日",
   }
 
   return (
@@ -74,7 +74,7 @@ export default function TermsPage() {
 
 /* ─────────────── 한국어 ─────────────── */
 function TermsKO() {
-  const updated = "2026년 5월 1일"
+  const updated = "2026년 6월 7일"
   return (
     <>
       <div className="bg-[rgba(91,110,245,0.06)] border border-[rgba(91,110,245,0.2)] rounded-xl p-5 mb-10 text-sm text-[#64748B] leading-relaxed">
@@ -187,7 +187,7 @@ function TermsKO() {
 
 /* ─────────────── English (US / California) ─────────────── */
 function TermsEN() {
-  const updated = "May 1, 2026"
+  const updated = "June 7, 2026"
   return (
     <>
       <div className="bg-[rgba(91,110,245,0.06)] border border-[rgba(91,110,245,0.2)] rounded-xl p-5 mb-10 text-sm text-[#64748B] leading-relaxed">
@@ -293,7 +293,7 @@ function TermsEN() {
 
 /* ─────────────── 繁體中文 (台灣) ─────────────── */
 function TermsTW() {
-  const updated = "2026年5月1日"
+  const updated = "2026年6月7日"
   return (
     <>
       <div className="bg-[rgba(91,110,245,0.06)] border border-[rgba(91,110,245,0.2)] rounded-xl p-5 mb-10 text-sm text-[#64748B] leading-relaxed">
