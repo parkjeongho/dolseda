@@ -131,7 +131,7 @@ function PrivacyKO() {
             <tr><td>설치된 앱 목록</td><td>앱 목록 조회 권한으로 자동 수집</td><td>앱 안전성 검사(앱체크) 기능 제공 (기기 내 처리, 서버 미전송)</td></tr>
           </tbody>
         </table>
-        <p className="mt-4"><strong className="text-[#0F172A]">절대 저장·전송하지 않는 정보:</strong> 문자·알림 원문(분석 즉시 폐기), 전화번호 원문, 주소, 금융정보, 위치정보</p>
+        <p className="mt-4"><strong className="text-[#0F172A]">절대 저장하지 않는 정보:</strong> 문자·알림 원문(분석 완료 즉시 폐기, 서버로는 발신자 정보가 제거된 정규화 텍스트만 전송될 수 있음), 전화번호 원문, 주소, 금융정보, 위치정보</p>
       </Section>
 
       <Section title="제2조 (개인정보 처리 원칙)">
