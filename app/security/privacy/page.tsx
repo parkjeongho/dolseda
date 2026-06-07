@@ -73,9 +73,9 @@ export default function PrivacyPage() {
 
 /* ─────────────────────────── Shared helpers ─────────────────────────── */
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ title, children, id }: { title: string; children: React.ReactNode; id?: string }) {
   return (
-    <div className="mb-10">
+    <div className="mb-10" id={id}>
       <h2 className="text-lg font-bold text-[#0F172A] mb-4 pb-3 border-b border-[#E2E8F0]">{title}</h2>
       <div className="space-y-3 text-[#64748B] text-sm leading-relaxed [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-2 [&_table]:w-full [&_table]:border-collapse [&_table]:rounded-xl [&_table]:overflow-hidden [&_th]:bg-[#F0F4FF] [&_th]:text-[#0F172A] [&_th]:font-semibold [&_th]:text-xs [&_th]:p-3 [&_th]:text-left [&_td]:p-3 [&_td]:border-b [&_td]:border-[#E2E8F0] [&_td]:text-xs [&_td]:text-[#475569]">
         {children}
@@ -165,7 +165,7 @@ function PrivacyKO() {
         </table>
       </Section>
 
-      <Section title="제4조 (개인정보의 제3자 제공)">
+      <Section title="제4조 (개인정보의 제3자 제공)" id="third-party">
         <p>회사는 개인정보 보호법 제17조에 따라 수집한 정보를 원칙적으로 제3자에게 제공하지 않습니다. 다만 아래의 경우는 예외입니다.</p>
         <ul>
           <li>사용자의 사전 동의를 받은 경우</li>
@@ -298,7 +298,7 @@ function PrivacyEN() {
         </ul>
       </Section>
 
-      <Section title="3. Disclosure of Information">
+      <Section title="3. Disclosure of Information" id="third-party">
         <p>We share data only in the following limited circumstances:</p>
         <ul>
           <li><strong className="text-[#0F172A]">Service providers (processors):</strong> Supabase Inc. (hash/risk storage), Google Cloud Platform (Cloud Run AI), Google Gemini API (normalized text only — deleted after analysis per DPA), Google AdMob (advertising ID and device info for ad delivery and fraud prevention). These parties are contractually prohibited from using your data for any other purpose. You may reset your Advertising ID or opt out of personalized ads in your device settings.</li>
@@ -454,7 +454,7 @@ function PrivacyTW() {
         <p className="mt-3">本公司將資料儲存於美國（Supabase Inc.、Google Cloud、Google AdMob），並對受託方要求遵守個資法等同等級之資料保護義務。</p>
       </Section>
 
-      <Section title="第五條（個人資料之第三方提供）">
+      <Section title="第五條（個人資料之第三方提供）" id="third-party">
         <p>本公司原則上不將您的個人資料提供予第三方，但下列情形除外：</p>
         <ul>
           <li>經您事先書面同意</li>
