@@ -108,7 +108,7 @@ function PrivacyKO() {
     <>
       <div className="bg-[rgba(91,110,245,0.06)] border border-[rgba(91,110,245,0.2)] rounded-xl p-5 mb-10 text-sm text-[#64748B] leading-relaxed">
         <strong className="text-[#0F172A]">핵심 원칙:</strong> ScamLens AI는 문자 원문 및 전화번호 원문을 서버에 저장하지 않습니다.
-        모든 분석은 기기에서 처리되며, 서버에는 암호화된 해시값과 위험도 분류 결과만 저장됩니다.
+        대부분의 분석은 기기에서 수행되며, 위험도가 높은 경우에 한해 발신자 정보가 제거된 정규화 텍스트가 서버에서 추가 분석될 수 있습니다. 서버에는 해시값과 위험도 분류 결과만 저장됩니다.
         본 방침은 <strong className="text-[#0F172A]">개인정보 보호법(PIPA)</strong>을 준수하여 작성되었습니다.
       </div>
 
@@ -136,7 +136,7 @@ function PrivacyKO() {
 
       <Section title="제2조 (개인정보 처리 원칙)">
         <ul>
-          <li><strong className="text-[#0F172A]">온디바이스 우선:</strong> 문자 분석은 사용자의 기기에서 수행되며, 원문은 기기 밖으로 전송되지 않습니다.</li>
+          <li><strong className="text-[#0F172A]">온디바이스 우선:</strong> 문자 분석은 사용자의 기기에서 수행되며, 문자 원문 및 전화번호 원문은 서버에 저장되지 않습니다.</li>
           <li><strong className="text-[#0F172A]">최소 수집:</strong> 서비스 제공에 필수적인 최소한의 정보만 수집합니다 (개인정보 보호법 제3조 제1항).</li>
           <li><strong className="text-[#0F172A]">목적 외 사용 금지:</strong> 수집된 정보는 명시된 목적 외에 사용되지 않습니다 (개인정보 보호법 제3조 제2항).</li>
           <li><strong className="text-[#0F172A]">재난안전문자 완전 제외:</strong> 국가 재난안전문자는 탐지 대상에서 제외되며 데이터가 수집되지 않습니다.</li>
@@ -147,6 +147,7 @@ function PrivacyKO() {
           <li><strong className="text-[#0F172A]">앱 목록 조회 권한(앱체크 기능):</strong> 앱체크 기능 사용 시 설치된 앱 목록을 기기 내에서 조회합니다. 앱 목록은 기기 내에서만 분석되며 서버로 전송되지 않습니다.</li>
           <li><strong className="text-[#0F172A]">AI 분석 처리 흐름:</strong> ① 알림 수신 → ② 온디바이스 TFLite 모델 1차 분석 → ③ 위험도 점수 20점 이상 시 Cloud Run으로 정규화 텍스트 전송(발신자 정보 제거) → ④ 점수 20~69점 구간의 프리미엄 사용자에 한해 Gemini AI 심층 분석 요청(정규화 텍스트만 전송, 분석 즉시 삭제)</li>
           <li><strong className="text-[#0F172A]">재부팅 자동 실행 및 백그라운드 상시 실행:</strong> 앱은 기기 재부팅 후 자동으로 시작되어 메시지 알림을 상시 모니터링합니다. 이는 실시간 보호 기능 제공을 위해 필요하며, 설정에서 알림 접근 권한을 해제하면 모니터링이 즉시 중단됩니다.</li>
+          <li><strong className="text-[#0F172A]">권한 해제:</strong> 사용자는 언제든지 알림 접근 권한을 해제할 수 있으며, 권한 해제 시 실시간 분석 기능은 즉시 중단됩니다.</li>
         </ul>
       </Section>
 
@@ -203,7 +204,7 @@ function PrivacyKO() {
 
       <Section title="제7조 (개인정보의 안전성 확보 조치)">
         <ul>
-          <li><strong className="text-[#0F172A]">단방향 암호화:</strong> 수집되는 모든 해시값은 SHA-256으로 암호화되어 원문 복원이 불가능합니다.</li>
+          <li><strong className="text-[#0F172A]">단방향 해시:</strong> 수집되는 모든 해시값은 SHA-256 단방향 해시 처리되어 원문 복원이 불가능합니다.</li>
           <li><strong className="text-[#0F172A]">전송 구간 암호화:</strong> 모든 서버 통신은 TLS 1.2 이상의 HTTPS로 암호화됩니다.</li>
           <li><strong className="text-[#0F172A]">접근 제한:</strong> 개인정보 처리 시스템에 대한 접근 권한을 업무 담당자로 최소화합니다.</li>
           <li><strong className="text-[#0F172A]">온디바이스 설계:</strong> 원본 데이터 서버 전송 자체를 아키텍처 설계 단계에서 차단합니다.</li>
@@ -225,15 +226,15 @@ function PrivacyKO() {
       </Section>
 
       <Section title="제9조 (만 14세 미만 아동)">
-        <p>ScamLens AI는 만 14세 미만 아동의 개인정보를 의도적으로 수집하지 않습니다. 만 14세 미만 아동은 법정대리인의 동의를 얻어야 서비스를 이용할 수 있습니다 (개인정보 보호법 제22조의2). 만 14세 미만 아동의 정보가 수집된 사실이 확인될 경우 즉시 삭제합니다.</p>
+        <p>본 서비스는 만 14세 미만 아동을 대상으로 하지 않습니다. 만 14세 미만 아동의 개인정보가 수집된 사실이 확인될 경우 즉시 삭제합니다.</p>
       </Section>
 
       <Section title="제10조 (개인정보 보호책임자)">
         <ContactBox>
           <p><strong className="text-[#0F172A]">개인정보 보호책임자</strong></p>
-          <p>이름: Jay Park</p>
+          <p>이름: 박정호</p>
           <p>소속: Vibe A</p>
-          <p>이메일: privacy@vibeacorp.com</p>
+          <p>이메일: vibe.factory904@gmail.com</p>
           <p className="text-xs text-[#94A3B8] pt-2">개인정보 관련 문의, 불만, 피해 구제 요청은 위 이메일로 접수하실 수 있습니다. 처리 결과가 만족스럽지 않으실 경우 개인정보보호위원회(privacy.go.kr)에 심의를 신청하실 수 있습니다.</p>
         </ContactBox>
       </Section>
@@ -253,7 +254,7 @@ function PrivacyEN() {
   return (
     <>
       <div className="bg-[rgba(91,110,245,0.06)] border border-[rgba(91,110,245,0.2)] rounded-xl p-5 mb-10 text-sm text-[#64748B] leading-relaxed">
-        <strong className="text-[#0F172A]">Privacy-First by Design.</strong> ScamLens AI never stores the raw text of your messages or your raw phone number. All analysis runs on your device; only cryptographic hashes and risk-level classifications leave it.
+        <strong className="text-[#0F172A]">Privacy-First by Design.</strong> ScamLens AI never stores raw message text or raw phone numbers on our servers. Most analysis runs on your device; only de-identified, non-reversible normalized text may be sent to our servers for additional analysis when risk is high.
         This Policy is governed by the laws of the <strong className="text-[#0F172A]">State of California, United States</strong> and complies with the <strong className="text-[#0F172A]">California Consumer Privacy Act (CCPA/CPRA)</strong> and CalOPPA.
       </div>
 
@@ -316,12 +317,12 @@ function PrivacyEN() {
           <li><strong className="text-[#0F172A]">Right to Limit Sensitive Personal Information:</strong> We do not use sensitive personal information beyond what is necessary to provide the Service.</li>
           <li><strong className="text-[#0F172A]">Right to Non-Discrimination:</strong> We will not discriminate against you for exercising any of these rights. We will not deny Service, charge different prices, or provide a different quality of service.</li>
         </ul>
-        <p className="mt-3">To exercise your rights, contact us at <strong className="text-[#0F172A]">privacy@vibeacorp.com</strong>. We will respond within <strong className="text-[#0F172A]">45 days</strong> (extendable by an additional 45 days with notice). We may verify your identity before fulfilling a request. You may designate an authorized agent to submit requests on your behalf.</p>
+        <p className="mt-3">To exercise your rights, contact us at <strong className="text-[#0F172A]">vibe.factory904@gmail.com</strong>. We will respond within <strong className="text-[#0F172A]">45 days</strong> (extendable by an additional 45 days with notice). We may verify your identity before fulfilling a request. You may designate an authorized agent to submit requests on your behalf.</p>
         <p className="mt-2 text-xs">California&rsquo;s &ldquo;Shine the Light&rdquo; law (Civil Code § 1798.83) entitles California residents to request, once per calendar year, information about disclosures to third parties for direct marketing purposes. We do not make such disclosures.</p>
       </Section>
 
       <Section title="5. &ldquo;Do Not Sell or Share My Personal Information&rdquo;">
-        <p>We do <strong className="text-[#0F172A]">not</strong> sell or share personal information as defined under CCPA/CPRA. We do not engage in cross-context behavioral advertising. If you have questions, email <strong className="text-[#0F172A]">privacy@vibeacorp.com</strong>.</p>
+        <p>We do <strong className="text-[#0F172A]">not</strong> sell or share personal information as defined under CCPA/CPRA. We do not engage in cross-context behavioral advertising. If you have questions, email <strong className="text-[#0F172A]">vibe.factory904@gmail.com</strong>.</p>
       </Section>
 
       <Section title="6. Data Retention">
@@ -345,7 +346,7 @@ function PrivacyEN() {
       </Section>
 
       <Section title="8. Children's Privacy (COPPA)">
-        <p>The Service is not directed to children under 13. We do not knowingly collect personal information from children under 13. If we learn that we have inadvertently collected such information, we will delete it promptly. If you believe we have collected information from a child under 13, contact us at <strong className="text-[#0F172A]">privacy@vibeacorp.com</strong>.</p>
+        <p>The Service is not directed to children under 13. We do not knowingly collect personal information from children under 13. If we learn that we have inadvertently collected such information, we will delete it promptly. If you believe we have collected information from a child under 13, contact us at <strong className="text-[#0F172A]">vibe.factory904@gmail.com</strong>.</p>
       </Section>
 
       <Section title="9. Security">
@@ -362,7 +363,7 @@ function PrivacyEN() {
         <ContactBox>
           <p><strong className="text-[#0F172A]">Privacy Contact</strong></p>
           <p>Vibe A</p>
-          <p>Email: privacy@vibeacorp.com</p>
+          <p>Email: vibe.factory904@gmail.com</p>
           <p className="text-xs text-[#94A3B8] pt-2">For privacy-related inquiries, rights requests, or complaints. We respond within 45 days for CCPA requests. California residents may also contact the California Privacy Protection Agency (cppa.ca.gov) or the California Attorney General.</p>
         </ContactBox>
       </Section>
@@ -382,7 +383,7 @@ function PrivacyTW() {
   return (
     <>
       <div className="bg-[rgba(91,110,245,0.06)] border border-[rgba(91,110,245,0.2)] rounded-xl p-5 mb-10 text-sm text-[#64748B] leading-relaxed">
-        <strong className="text-[#0F172A]">核心原則：</strong>ScamLens AI 不在伺服器儲存您的原始簡訊內容或電話號碼。所有分析均在您的裝置上執行，伺服器僅保存加密雜湊值及風險等級分類結果。
+        <strong className="text-[#0F172A]">核心原則：</strong>ScamLens AI 不在伺服器儲存簡訊原文或電話號碼。大部分分析於您的裝置上執行；高風險情況下，已移除發送方資訊之正規化文字可能傳送至伺服器進行額外分析。伺服器僅保存雜湊值及風險等級分類結果。
         本隱私權政策依據<strong className="text-[#0F172A]">中華民國個人資料保護法（個資法）</strong>制定。
       </div>
 
@@ -433,7 +434,7 @@ function PrivacyTW() {
           <li><strong className="text-[#0F172A]">停止蒐集、處理或利用：</strong>您可要求停止蒐集、處理或利用您的個人資料（個資法第3條第4款）。</li>
           <li><strong className="text-[#0F172A]">刪除：</strong>您可要求刪除本公司保有之您的個人資料（個資法第3條第5款）。</li>
         </ul>
-        <p className="mt-2">請將權利行使請求寄至：<strong className="text-[#0F172A]">privacy@vibeacorp.com</strong></p>
+        <p className="mt-2">請將權利行使請求寄至：<strong className="text-[#0F172A]">vibe.factory904@gmail.com</strong></p>
         <p className="mt-2">如對本公司之處理結果不滿意，您可向<strong className="text-[#0F172A]">個人資料保護委員會</strong>（pdpc.gov.tw）提出申訴，或依個資法第51條提起訴訟。</p>
       </Section>
 
@@ -476,7 +477,7 @@ function PrivacyTW() {
 
       <Section title="第六條（安全維護措施）">
         <ul>
-          <li><strong className="text-[#0F172A]">單向雜湊加密：</strong>所有雜湊值採用 SHA-256 加密，無法還原原文。</li>
+          <li><strong className="text-[#0F172A]">單向雜湊處理：</strong>所有雜湊值採用 SHA-256 單向雜湊處理，無法還原原文。</li>
           <li><strong className="text-[#0F172A]">傳輸加密：</strong>所有伺服器通訊使用 TLS 1.2 以上之 HTTPS 加密。</li>
           <li><strong className="text-[#0F172A]">存取控制：</strong>個人資料存取僅限授權人員，並依最小權限原則管理。</li>
           <li><strong className="text-[#0F172A]">隱私設計：</strong>原始簡訊資料於架構設計層面即阻止傳送至外部伺服器。</li>
@@ -490,9 +491,9 @@ function PrivacyTW() {
       <Section title="第八條（個人資料保護聯絡方式）">
         <ContactBox>
           <p><strong className="text-[#0F172A]">個人資料管理負責人</strong></p>
-          <p>姓名：Jay Park</p>
+          <p>姓名：박정호 (Jay Park)</p>
           <p>公司：Vibe A</p>
-          <p>電子郵件：privacy@vibeacorp.com</p>
+          <p>電子郵件：vibe.factory904@gmail.com</p>
           <p className="text-xs text-[#94A3B8] pt-2">如有個人資料相關問題、申訴或權利行使請求，請以電子郵件聯絡。若對本公司處理結果不滿意，您可向個人資料保護委員會（pdpc.gov.tw）提出申訴。</p>
         </ContactBox>
       </Section>
