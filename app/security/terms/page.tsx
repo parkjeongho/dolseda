@@ -175,7 +175,7 @@ function TermsKO() {
 
       <Section title="제11조 (문의)">
         <ContactBox items={[
-          ["서비스 문의", "support@vibeacorp.com"],
+          ["서비스 문의", "vibe.factory904@gmail.com"],
           ["회사명", "Vibe A"],
           ["대표자", "박정호"],
         ]} />
@@ -226,7 +226,7 @@ function TermsEN() {
           <li>Paid subscriptions are processed through the <strong className="text-[#0F172A]">Google Play Store</strong>. By subscribing, you authorize recurring charges at the applicable rate.</li>
           <li>Subscriptions automatically renew unless canceled at least 24 hours before the end of the current billing period.</li>
           <li>You may cancel your subscription at any time through the Google Play Store. Cancellation takes effect at the end of the current billing period; no partial refunds are issued for unused time.</li>
-          <li>Refunds for in-app purchases are subject to <a href="https://support.google.com/googleplay/answer/2479637" className="text-[#00D4AA] hover:underline" target="_blank" rel="noopener noreferrer">Google Play&apos;s refund policy</a>. If you experience a service-preventing error, contact us at support@vibeacorp.com for a pro-rated credit.</li>
+          <li>Refunds for in-app purchases are subject to <a href="https://support.google.com/googleplay/answer/2479637" className="text-[#00D4AA] hover:underline" target="_blank" rel="noopener noreferrer">Google Play&apos;s refund policy</a>. If you experience a service-preventing error, contact us at vibe.factory904@gmail.com for a pro-rated credit.</li>
           <li><strong className="text-[#0F172A]">California Residents:</strong> Under the California Automatic Renewal Law (Business &amp; Professions Code § 17600 et seq.), we disclose that your subscription will automatically renew. You may cancel at any time as described above.</li>
         </ul>
       </Section>
@@ -247,7 +247,7 @@ function TermsEN() {
         <ul>
           <li>The Service, including all software, content, and trademarks, is owned by Vibe A and protected by U.S. and international intellectual property laws.</li>
           <li>Anonymized, aggregated detection pattern data generated through your use of the Service may be used to improve our AI models.</li>
-          <li>If you believe any content infringes your copyright, contact us at support@vibeacorp.com with a DMCA-compliant takedown notice.</li>
+          <li>If you believe any content infringes your copyright, contact us at vibe.factory904@gmail.com with a DMCA-compliant takedown notice.</li>
         </ul>
       </Section>
 
@@ -266,7 +266,7 @@ function TermsEN() {
 
       <Section title="9. Dispute Resolution & Arbitration">
         <ul>
-          <li><strong className="text-[#0F172A]">Informal Resolution First:</strong> Before filing any claim, you agree to contact us at support@vibeacorp.com and give us 30 days to resolve the dispute informally.</li>
+          <li><strong className="text-[#0F172A]">Informal Resolution First:</strong> Before filing any claim, you agree to contact us at vibe.factory904@gmail.com and give us 30 days to resolve the dispute informally.</li>
           <li><strong className="text-[#0F172A]">Binding Arbitration:</strong> If informal resolution fails, disputes shall be resolved by binding individual arbitration administered by the American Arbitration Association (AAA) under its Consumer Arbitration Rules, not in court.</li>
           <li><strong className="text-[#0F172A]">Class Action Waiver:</strong> You waive the right to participate in class action lawsuits or class-wide arbitration.</li>
           <li><strong className="text-[#0F172A]">Small Claims Exception:</strong> Either party may bring claims in small claims court for qualifying disputes.</li>
@@ -281,7 +281,7 @@ function TermsEN() {
 
       <Section title="11. Contact">
         <ContactBox items={[
-          ["Support", "support@vibeacorp.com"],
+          ["Support", "vibe.factory904@gmail.com"],
           ["Company", "Vibe A"],
           ["Representative", "Jay Park (박정호)"],
         ]} />
@@ -394,7 +394,7 @@ function TermsTW() {
 
       <Section title="第十一條（聯絡我們）">
         <ContactBox items={[
-          ["客服信箱", "support@vibeacorp.com"],
+          ["客服信箱", "vibe.factory904@gmail.com"],
           ["公司名稱", "Vibe A"],
           ["負責人", "박정호 (Jay Park)"],
         ]} />
