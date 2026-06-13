@@ -16,9 +16,9 @@ export default function PrivacyPage() {
   ]
 
   const headerInfo: Record<Lang, { title: string; updated: string; subtitle: string }> = {
-    ko:    { title: "개인정보처리방침", updated: "2026년 6월 7일", subtitle: "시행일" },
-    en:    { title: "Privacy Policy",  updated: "June 7, 2026",  subtitle: "Effective Date" },
-    "zh-TW": { title: "隱私權政策",   updated: "2026年6月7日",   subtitle: "生效日期" },
+    ko:    { title: "개인정보처리방침", updated: "2026년 6월 13일", subtitle: "시행일" },
+    en:    { title: "Privacy Policy",  updated: "June 13, 2026",  subtitle: "Effective Date" },
+    "zh-TW": { title: "隱私權政策",   updated: "2026年6月13日",   subtitle: "生效日期" },
   }
 
   const h = headerInfo[lang]
@@ -129,6 +129,8 @@ function PrivacyKO() {
             <tr><td>광고 식별자(GAID)</td><td>Google AdMob SDK 자동 수집</td><td>광고 표시 및 광고 사기 방지</td></tr>
             <tr><td>알림 내용(제목·본문)</td><td>알림 접근 권한으로 자동 수집</td><td>온디바이스 AI 스팸·피싱 분석 (분석 즉시 폐기, 서버 미전송)</td></tr>
             <tr><td>설치된 앱 목록</td><td>앱 목록 조회 권한으로 자동 수집</td><td>앱 안전성 검사(앱체크) 기능 제공 (기기 내 처리, 서버 미전송)</td></tr>
+            <tr><td>서비스 이용 기록(앱 실행·화면 조회·기능 사용·오류) 및 익명 세션 식별자</td><td>앱 사용 시 자동 수집</td><td>이용 통계, 오류 진단, 서비스 개선</td></tr>
+            <tr><td>오탐 신고 시 사용자가 직접 입력한 설명(선택)</td><td>사용자 직접 입력</td><td>오탐 원인 분석 및 분석 정확도 개선</td></tr>
           </tbody>
         </table>
         <p className="mt-4"><strong className="text-[#0F172A]">절대 저장하지 않는 정보:</strong> 문자·알림 원문(분석 완료 즉시 폐기, 서버로는 발신자 정보가 제거된 정규화 텍스트만 전송될 수 있음), 전화번호 원문, 주소, 금융정보, 위치정보</p>
@@ -158,6 +160,7 @@ function PrivacyKO() {
           </thead>
           <tbody>
             <tr><td>문자 해시값 및 분류 결과</td><td>수집일로부터 2년</td><td>서비스 품질 개선</td></tr>
+            <tr><td>서비스 이용 기록(이벤트 로그)</td><td>수집일로부터 1년</td><td>서비스 개선</td></tr>
             <tr><td>구독 관련 결제 기록</td><td>5년</td><td>전자상거래법 제6조</td></tr>
             <tr><td>소셜 로그인 정보</td><td>회원 탈퇴 시 즉시 삭제</td><td>사용자 요청</td></tr>
             <tr><td>기기 식별자</td><td>앱 삭제 또는 동의 철회 시 즉시 삭제</td><td>사용자 요청</td></tr>
@@ -185,6 +188,7 @@ function PrivacyKO() {
             <tr><td>Google Cloud Platform</td><td>Cloud Run 서버 운영 (유료 AI 분석)</td><td>위탁 계약 종료 시</td></tr>
             <tr><td>Google LLC (Gemini API)</td><td>유료 사용자 심층 AI 분석 (정규화 텍스트만 전송)</td><td>분석 완료 후 즉시 삭제</td></tr>
             <tr><td>Google LLC (AdMob)</td><td>광고 표시, 광고 성과 측정, 광고 사기 방지</td><td>위탁 계약 종료 시</td></tr>
+            <tr><td>Google LLC (Firebase Analytics)</td><td>앱 이용 행태·이벤트 분석 (통계)</td><td>위탁 계약 종료 시</td></tr>
           </tbody>
         </table>
         <p className="mt-2 text-xs">Gemini API로 전송되는 텍스트는 발신자 정보가 제거된 정규화 텍스트이며, Google DPA에 따라 AI 학습 데이터로 사용되지 않습니다. AdMob은 광고 식별자(GAID)를 수집하며, 기기 설정에서 광고 ID를 초기화하거나 맞춤 광고를 거부할 수 있습니다.</p>
@@ -243,7 +247,7 @@ function PrivacyKO() {
         <p>본 방침은 법령·서비스 변경 시 개정될 수 있습니다. 중요한 변경이 있을 경우 시행 <strong className="text-[#0F172A]">7일 전</strong>에 앱 내 공지 및 이메일로 안내합니다.</p>
       </Section>
 
-      <Footer line1="시행일: 2026년 6월 7일" line2="Vibe A · ScamLens AI · 개인정보처리방침" />
+      <Footer line1="시행일: 2026년 6월 13일" line2="Vibe A · ScamLens AI · 개인정보처리방침" />
     </>
   )
 }
@@ -275,6 +279,8 @@ function PrivacyEN() {
             <tr><td>Advertising ID (GAID)</td><td>Google AdMob SDK, automatic</td><td>Ad delivery and fraud prevention</td></tr>
             <tr><td>Notification content (title &amp; body)</td><td>Notification access permission, automatic</td><td>On-device AI spam/phishing analysis (discarded immediately after analysis, never sent to server)</td></tr>
             <tr><td>Installed app list</td><td>App list permission, automatic</td><td>App Safety Check feature (processed on-device only, never sent to server)</td></tr>
+            <tr><td>Usage &amp; event logs (app opens, screen views, feature use, errors) and anonymous session ID</td><td>Collected automatically during use</td><td>Usage statistics, error diagnosis, service improvement</td></tr>
+            <tr><td>Free-text description you write in a false-positive report (optional)</td><td>User-provided input</td><td>Diagnosing false positives and improving accuracy</td></tr>
           </tbody>
         </table>
         <p className="mt-4"><strong className="text-[#0F172A]">Data we never store or transmit:</strong> raw message/notification text (discarded immediately after analysis), raw phone numbers, precise geolocation, financial account details, Social Security numbers.</p>
@@ -301,7 +307,7 @@ function PrivacyEN() {
       <Section title="3. Disclosure of Information" id="third-party">
         <p>We share data only in the following limited circumstances:</p>
         <ul>
-          <li><strong className="text-[#0F172A]">Service providers (processors):</strong> Supabase Inc. (hash/risk storage), Google Cloud Platform (Cloud Run AI), Google Gemini API (normalized text only — deleted after analysis per DPA), Google AdMob (advertising ID and device info for ad delivery and fraud prevention). These parties are contractually prohibited from using your data for any other purpose. You may reset your Advertising ID or opt out of personalized ads in your device settings.</li>
+          <li><strong className="text-[#0F172A]">Service providers (processors):</strong> Supabase Inc. (hash/risk storage, usage/event logs), Google Cloud Platform (Cloud Run AI), Google Gemini API (normalized text only — deleted after analysis per DPA), Google AdMob (advertising ID and device info for ad delivery and fraud prevention), Google Firebase Analytics (app usage and event analytics). These parties are contractually prohibited from using your data for any other purpose. You may reset your Advertising ID or opt out of personalized ads in your device settings.</li>
           <li><strong className="text-[#0F172A]">Legal process:</strong> We may disclose data when required by valid court order, subpoena, or applicable law. We will notify you unless prohibited by law.</li>
           <li><strong className="text-[#0F172A]">Business transfers:</strong> In a merger or acquisition, your data may transfer to the successor entity subject to the same privacy commitments.</li>
         </ul>
@@ -332,6 +338,7 @@ function PrivacyEN() {
           </thead>
           <tbody>
             <tr><td>Message hash &amp; risk classification</td><td>2 years from collection</td></tr>
+            <tr><td>Usage &amp; event logs</td><td>1 year from collection</td></tr>
             <tr><td>Subscription / payment records</td><td>5 years (California commercial law)</td></tr>
             <tr><td>Social login credentials</td><td>Deleted upon account deletion</td></tr>
             <tr><td>Device identifier</td><td>Deleted upon app uninstall or withdrawal of consent</td></tr>
@@ -372,7 +379,7 @@ function PrivacyEN() {
         <p>We may update this Policy as laws or the Service change. For material changes, we will provide at least <strong className="text-[#0F172A]">30 days&rsquo; notice</strong> via in-app notification or email before the change takes effect. Continued use after the effective date constitutes acceptance. If you do not agree, please discontinue use and contact us to delete your account.</p>
       </Section>
 
-      <Footer line1="Effective Date: June 7, 2026" line2="Vibe A · ScamLens AI · Privacy Policy · California Law" />
+      <Footer line1="Effective Date: June 13, 2026" line2="Vibe A · ScamLens AI · Privacy Policy · California Law" />
     </>
   )
 }
@@ -404,6 +411,8 @@ function PrivacyTW() {
             <tr><td>廣告識別碼（GAID）</td><td>Google AdMob SDK 自動蒐集</td><td>廣告投放及廣告詐欺防範</td></tr>
             <tr><td>通知內容（標題·內文）</td><td>通知存取權限自動蒐集</td><td>裝置端 AI 詐騙訊息分析（分析後立即銷毀，不傳送至伺服器）</td></tr>
             <tr><td>已安裝應用程式清單</td><td>應用程式清單存取權限自動蒐集</td><td>應用程式安全檢查功能（僅限裝置端處理，不傳送至伺服器）</td></tr>
+            <tr><td>服務使用紀錄（啟動·畫面瀏覽·功能使用·錯誤）及匿名工作階段識別碼</td><td>使用時自動蒐集</td><td>使用統計、錯誤診斷、服務改善</td></tr>
+            <tr><td>誤報檢舉時使用者自行輸入之說明（選填）</td><td>使用者輸入</td><td>誤報原因分析及準確度改善</td></tr>
           </tbody>
         </table>
         <p className="mt-4"><strong className="text-[#0F172A]">絕不儲存或傳送：</strong>簡訊·通知原文（分析後立即銷毀）、電話號碼原碼、地址、金融帳戶資訊</p>
@@ -445,6 +454,7 @@ function PrivacyTW() {
           </thead>
           <tbody>
             <tr><td>簡訊雜湊值及分類結果</td><td>蒐集後2年</td><td>服務品質改善</td></tr>
+            <tr><td>服務使用紀錄（事件日誌）</td><td>蒐集後1年</td><td>服務改善</td></tr>
             <tr><td>訂閱付款紀錄</td><td>5年</td><td>消費者保護法第19條</td></tr>
             <tr><td>社群登入資訊</td><td>帳號刪除時立即刪除</td><td>當事人要求</td></tr>
             <tr><td>裝置識別碼</td><td>解除安裝或撤回同意時立即刪除</td><td>當事人要求</td></tr>
@@ -470,6 +480,7 @@ function PrivacyTW() {
             <tr><td>Google Cloud Platform（美國）</td><td>Cloud Run 伺服器運作</td><td>委託契約終止時</td></tr>
             <tr><td>Google LLC — Gemini API（美國）</td><td>付費用戶深度 AI 分析（僅傳送正規化文字）</td><td>分析完成後立即刪除</td></tr>
             <tr><td>Google LLC — AdMob（美國）</td><td>廣告投放、廣告效果評估、廣告詐欺防範</td><td>依 AdMob 資料保留政策，可於裝置設定重設</td></tr>
+            <tr><td>Google LLC — Firebase Analytics（美國）</td><td>應用程式使用行為·事件分析（統計）</td><td>委託契約終止時</td></tr>
           </tbody>
         </table>
         <p className="mt-2 text-xs">Gemini API 僅接收已移除發送方資訊之正規化文字，依 Google DPA 不用於 AI 訓練。AdMob 蒐集廣告識別碼（GAID），您可於裝置設定中重設廣告 ID 或拒絕個人化廣告。</p>
@@ -502,7 +513,7 @@ function PrivacyTW() {
         <p>本政策因法規或服務變更時得予修訂。重大修訂時，本公司將於生效日前<strong className="text-[#0F172A]">7日</strong>透過應用程式內通知或電子郵件告知。繼續使用本服務即視為同意修訂後之條款。</p>
       </Section>
 
-      <Footer line1="生效日期：2026年6月7日" line2="Vibe A · ScamLens AI · 隱私權政策 · 適用中華民國法律" />
+      <Footer line1="生效日期：2026年6月13日" line2="Vibe A · ScamLens AI · 隱私權政策 · 適用中華民國法律" />
     </>
   )
 }
